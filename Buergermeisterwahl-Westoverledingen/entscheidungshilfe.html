@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Bürgermeisterwahl Westoverledingen 2026 – Entscheidungshilfe</title>
 <style>
 @page { size: A4; margin: 17mm 16mm 15mm 16mm; }
@@ -109,6 +110,22 @@ tr{page-break-inside:avoid;}
 .q p{margin:0; font-size:9.5pt;}
 
 footer{margin-top:20px; padding-top:9px; border-top:1px solid var(--line);}
+
+/* Bildschirmdarstellung – wirkt nicht auf den Druck */
+@media screen{
+  body{max-width:820px; margin:0 auto; padding:24px 18px 60px;}
+}
+@media screen and (max-width:700px){
+  .metabar{flex-wrap:wrap;}
+  .metabar div{flex:1 1 46%; border-right:none; border-bottom:1px solid var(--line);}
+  .metabar div:nth-last-child(-n+1){border-bottom:none;}
+  .metabar .val{white-space:normal;}
+  .poles{flex-direction:column;}
+  table{font-size:9.6pt;}
+  th,td{padding:6px 6px;}
+  td.who{width:30%;}
+  .card{padding:10px 11px 11px;}
+}
 </style>
 </head>
 <body>
