@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Landratswahl Landkreis Leer 2026 – Entscheidungshilfe</title>
+<style>
+@page { size: A4; margin: 17mm 16mm 15mm 16mm; }
+:root{
+  --ink:#1a1d21; --mute:#5c646d; --line:#d3d8dd; --soft:#f4f6f8;
+  --k1:#8a6a2f; --k2:#2f5d7c; --k3:#6b4a7a;
+  --accent:#1f4c6b; --ja:#2f6d47; --nein:#9d3b32;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  font-size:10.2pt; line-height:1.5;
+}
+h1,h2,h3,h4,.sans{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+h1{font-size:23pt; line-height:1.15; margin:0 0 6px; letter-spacing:-.4px;}
+h2{page-break-after:avoid; break-after:avoid; font-size:13.5pt; margin:0 0 10px; color:var(--accent); letter-spacing:-.2px;
+   border-bottom:2px solid var(--accent); padding-bottom:5px;}
+h3{font-size:11pt; margin:16px 0 5px;}
+p{margin:0 0 8px;}
+ul{margin:0 0 8px; padding-left:17px;} li{margin-bottom:3px;}
+.small{font-size:8.6pt; line-height:1.4;}
+.mute{color:var(--mute);}
+section{page-break-inside:auto;}
+.page-break{page-break-before:always;}
+.avoid{page-break-inside:avoid; break-inside:avoid;}
+
+.cover{border-top:5px solid var(--accent); padding-top:14px; margin-bottom:22px;}
+.kicker{font-size:8.6pt; letter-spacing:1.6px; text-transform:uppercase;
+        color:var(--accent); font-weight:700; margin-bottom:9px;}
+.lede{font-size:11.4pt; color:#333; margin-top:10px; max-width:96%;}
+.metabar{display:flex; gap:0; border:1px solid var(--line); margin-top:16px;}
+.metabar div{flex:1; padding:8px 9px; border-right:1px solid var(--line);}
+.metabar div:last-child{border-right:none;}
+.metabar .lbl{font-size:7.4pt; letter-spacing:1.1px; text-transform:uppercase; color:var(--mute); font-weight:700;}
+.metabar .val{font-size:9.2pt; font-weight:600; margin-top:2px; white-space:nowrap;}
+
+.note{background:var(--soft); border-left:3px solid var(--accent);
+      padding:9px 12px; margin:14px 0; page-break-inside:avoid; break-inside:avoid;}
+
+.card{border:1px solid var(--line); border-top:4px solid var(--c);
+      padding:10px 12px 11px; margin-bottom:9px; page-break-inside:avoid; break-inside:avoid;}
+.cardhead{display:flex; gap:11px; align-items:flex-start; margin-bottom:7px;}
+.mono{
+  width:23mm; height:23mm; flex:none; box-sizing:border-box;
+  background:var(--t); border:1px solid var(--tb); border-radius:2px; color:var(--c);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700; font-size:16pt; letter-spacing:.6px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.cardhead .hx{flex:1;}
+.card .name{font-size:12.4pt; font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+            line-height:1.2;}
+.card .tag{font-size:8.6pt; color:var(--c); font-weight:700; letter-spacing:.4px;
+           font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin:2px 0 6px;}
+.card .facts{font-size:8.9pt; color:var(--mute); margin-bottom:6px;}
+.card p{margin-bottom:5px; font-size:9.7pt;}
+.card .claim{font-size:9.3pt; background:var(--soft); padding:6px 9px; margin-top:7px;}
+.card .claim b{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8.2pt;
+               letter-spacing:.6px; text-transform:uppercase; color:var(--mute);
+               display:block; margin-bottom:2px;}
+
+table{width:100%; border-collapse:collapse; margin:6px 0 14px; font-size:9.1pt;}
+th,td{text-align:left; vertical-align:top; padding:6px 8px; border-bottom:1px solid var(--line);}
+th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8pt;
+   letter-spacing:.8px; text-transform:uppercase; color:var(--mute);
+   border-bottom:1.5px solid var(--ink); font-weight:700;}
+td.who{width:23%; font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+       font-size:9pt; border-left:3px solid transparent; padding-left:8px;}
+tr{page-break-inside:avoid; break-inside:avoid;}
+.w-bade{border-left-color:var(--k1)!important;}
+.w-groote{border-left-color:var(--k2)!important;}
+.w-voelker{border-left-color:var(--k3)!important;}
+.pos{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8pt; font-weight:700;
+     letter-spacing:.4px; display:inline-block; padding:1px 6px; border:1px solid var(--line);
+     background:#fff; margin-bottom:3px; white-space:nowrap;}
+
+/* Kartenrunde */
+table.cards{font-size:8.9pt;}
+table.cards th{text-align:center;}
+table.cards th:first-child{text-align:left; width:49%;}
+table.cards td.q{padding-right:12px;}
+table.cards td.v{text-align:center; width:17%;}
+.pill{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:7.8pt; font-weight:700;
+      letter-spacing:.7px; display:inline-block; padding:2px 9px; color:#fff; border-radius:2px;}
+.pill.ja{background:var(--ja);} .pill.nein{background:var(--nein);}
+.hd-bade{color:var(--k1)!important;} .hd-groote{color:var(--k2)!important;} .hd-voelker{color:var(--k3)!important;}
+
+.axis{border:1px solid var(--line); padding:10px 12px; margin-bottom:10px; page-break-inside:avoid; break-inside:avoid;}
+.axis .t{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:9.8pt;
+         margin-bottom:4px;}
+.poles{display:flex; gap:10px; margin-top:7px; font-size:8.8pt;}
+.poles div{flex:1; background:var(--soft); padding:6px 8px;}
+.poles .ph{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:7.6pt;
+           text-transform:uppercase; letter-spacing:.8px; color:var(--mute); font-weight:700;
+           display:block; margin-bottom:2px;}
+
+.q{border-left:3px solid var(--accent); padding:8px 12px; margin-bottom:9px;
+   background:#fbfcfd; page-break-inside:avoid; break-inside:avoid;}
+.mini{width:auto; margin:7px 0 8px; font-size:8.6pt; border-collapse:collapse;}
+.mini td{padding:3px 10px 3px 8px; border-bottom:1px solid var(--line); background:#fff;}
+.mini td.n{font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+           border-left:3px solid transparent;}
+.mini td.v{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8.2pt;}
+.q .qt{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:9.8pt;
+       margin-bottom:3px;}
+.q p{margin:0; font-size:9.5pt;}
+
+footer{margin-top:20px; padding-top:9px; border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="kicker">Entscheidungshilfe zur Landratswahl am 13. September 2026</div>
+  <h1>Wer soll Landrat im<br>Landkreis Leer werden?</h1>
+  <p class="lede">Drei Bewerber, ein Amt, erstmals acht Jahre Amtszeit. Diese Übersicht fasst zusammen,
+  was die Kandidaten bei der Podiumsdiskussion von Ostfriesen-Zeitung und General-Anzeiger
+  am 20.&nbsp;August 2026 im Sparkassenforum in Leer tatsächlich gesagt haben – sortiert nach Themen,
+  damit Sie die Unterschiede nebeneinander sehen können.</p>
+  <div class="metabar">
+    <div><div class="lbl">Wahltag</div><div class="val">So., 13.09.2026</div></div>
+    <div><div class="lbl">Stichwahl</div><div class="val">So., 27.09.2026</div></div>
+    <div><div class="lbl">Bewerber</div><div class="val">3</div></div>
+    <div><div class="lbl">Amtszeit</div><div class="val">8 Jahre</div></div>
+    <div><div class="lbl">Amtsinhaber</div><div class="val">tritt wieder an</div></div>
+  </div>
+</div>
+
+<div class="note small">
+  <b>Wie diese Übersicht entstanden ist.</b> Grundlage ist die vollständige Videoaufzeichnung der
+  Podiumsdiskussion (rund zwei Stunden, veröffentlicht von ostfriesen.tv). Ausgewertet wurde ein
+  automatisch erzeugtes Transkript. Alle Aussagen sind daher <b>sinngemäß zusammengefasst, nicht
+  wörtlich zitiert</b>. Einzelne Orts-, Personen- und Zahlenangaben können in der automatischen
+  Spracherkennung unpräzise sein; Namen und überprüfbare Eckdaten wurden gegengeprüft, wo etwas
+  unklar blieb, ist das gekennzeichnet. Die <b>Ja-/Nein-Kartenrunde</b> steht nicht im Transkript –
+  sie wurde Bild für Bild aus dem Video ausgewertet (siehe Seite&nbsp;6). Wahlprogramme, Flyer und
+  sonstige Wahlkampfauftritte wurden nicht berücksichtigt – ein Podiumsabend zeigt Schwerpunkte,
+  nicht das ganze Programm. Diese Zusammenstellung ist bewusst neutral gehalten und enthält
+  <b>keine Wahlempfehlung</b>.
+</div>
+
+<section>
+<h2>Die drei Bewerber auf einen Blick</h2>
+<p class="small mute" style="margin-top:-4px;">Alphabetisch nach Nachnamen. Die Farbe je Kandidat
+wiederholt sich in allen Tabellen dieses Dokuments – sie ist eine reine Lesehilfe und hat nichts
+mit Parteifarben zu tun. Das Monogramm neben dem Namen zeigt die
+Initialen in dieser Farbe.</p>
+
+<div class="card" style="--c:var(--k1); --t:#F1EDE6; --tb:#D6CBB6">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">OB</div>
+  <div class="hx"><div class="name">Olaf Bade</div>
+  <div class="tag">parteilos, von der CDU nominiert · der Quereinsteiger</div>
+  <div class="facts">54 Jahre · lebt in Bunde · verheiratet, drei Kinder</div></div>
+</div>
+  <p><b>Beruflicher Hintergrund:</b> Diplom-Ingenieur (FH) mit MBA, rund 30 Jahre Berufserfahrung in
+  Deutschland und den Niederlanden – nach eigener Aussage zunächst Verwaltungsbeamter im staatlichen
+  Hochbau der Niederlande, später Bauingenieur, Interims- und Projektmanager, zuletzt verantwortlich
+  für das Deutschlandgeschäft eines niederländischen Industrieunternehmens. Erfahrung im Modulbau:
+  unter anderem 1.548 Wohneinheiten in Berlin und ein Studentenwohnprojekt in Bochum mit einer
+  gemeinsam mit dem Fraunhofer-Institut entwickelten Klimaschutzfassade.</p>
+  <p><b>Auftritt am Abend:</b> der Kandidat mit den meisten Beispielen von außen – Emsland,
+  Niederlande, Groningen, Bochum, Berlin. Er nennt Zahlen aus dem Wahlkampf (zwölf Wochen,
+  168 Gespräche, 7.000 Kilometer im Landkreis) und stellt selbst Fragen an die Verwaltung:
+  Notstromaggregate für die Pumpwerke, Leerstand, ein fehlender Wasserstoff-Anschluss.</p>
+  <div class="claim"><b>Sein Kernargument</b>Der Landkreis muss das Rad nicht neu erfinden.
+  Er will Best Practices von anderen holen, Genehmigungen beschleunigen und mit den zwölf Kommunen
+  gemeinsame Masterpläne machen – „zuhören, verbinden, voranbringen“.</div>
+</div>
+
+<div class="card" style="--c:var(--k2); --t:#E6ECEF; --tb:#B6C6D1">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">MG</div>
+  <div class="hx"><div class="name">Matthias Groote</div>
+  <div class="tag">SPD · der Amtsinhaber</div>
+  <div class="facts">Jahrgang 1973, geboren in Leer · verheiratet, zwei Kinder · seit 2016 Landrat</div></div>
+</div>
+  <p><b>Beruflicher und politischer Hintergrund:</b> Ausbildung zum Industriemechaniker bei der
+  Deutschen Bahn, danach Studium zum Diplom-Wirtschaftsingenieur. SPD-Mitglied seit 1996, Rat in
+  Ostrhauderfehn, Kreistag Leer; von 2005 bis 2016 Abgeordneter im Europäischen Parlament, dort
+  2012–2014 Vorsitzender des Umweltausschusses. Seit 2016 Landrat, 2021 mit 81,25&nbsp;% der Stimmen
+  bestätigt.</p>
+  <p><b>Auftritt am Abend:</b> der Kandidat mit den meisten laufenden Vorhaben und den meisten Zahlen –
+  Arzt-Stipendien, Jugendticket, Net-Zero-Valley, KI-Strategie, Feuerwehrzentrale. Er antwortet häufig
+  mit „haben wir auf den Weg gebracht“ und markiert konsequent, wo die Zuständigkeit des Kreises endet.</p>
+  <div class="claim"><b>Sein Kernargument</b>Vieles läuft bereits und braucht Fortsetzung.
+  Entscheidend sei Durchsetzungskraft gegenüber Land, Bund und EU – vom Sielzug über die
+  Krankenhausfinanzierung bis zur Energiewende.</div>
+</div>
+
+<div class="card" style="--c:var(--k3); --t:#EDE9EF; --tb:#CBC0D1">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">JV</div>
+  <div class="hx"><div class="name">Jens Völker</div>
+  <div class="tag">FDP · der Herausforderer aus dem Kreistag</div>
+  <div class="facts">lebt in Bunde · verheiratet, zwei Kinder · zweite Bewerbung um das Amt</div></div>
+</div>
+  <p><b>Beruflicher Hintergrund:</b> gelernter Landwirt, Studium der Agrarwissenschaft, heute
+  Verkaufsleiter im Agrarbereich. Vorsitzender der FDP-Fraktion im Kreistag und Mitglied im
+  Gemeinderat Bunde. Bei der Landratswahl 2021 erreichte er 18,75&nbsp;% der Stimmen.</p>
+  <p><b>Auftritt am Abend:</b> argumentiert am stärksten aus der Kreistagsarbeit – er verweist
+  mehrfach auf eigene Anträge, etwa zum Anrufbus und zur Auslagerung der Berufsschulplanung – und
+  aus der Landwirtschaft. Er trennt konsequent zwischen Kreis-, Gemeinde-, Landes- und
+  Bundeszuständigkeit und weigert sich mehrfach, Dilemmafragen zu beantworten.</p>
+  <div class="claim"><b>Sein Kernargument</b>Effizienz statt mehr Personal: Der Kreis soll mit dem
+  vorhandenen Apparat schneller und vor allem nachvollziehbarer entscheiden – und die
+  Energie-Infrastruktur nutzen, um energieintensive Industrie anzusiedeln.</div>
+</div>
+
+<div class="note small">
+  <b>Anmerkung zur Unterstützung von Olaf Bade.</b> Die Moderation nannte am Abend „CDU und Grüne“
+  als Unterstützer. Öffentlich dokumentiert sind die einstimmige Nominierung durch die CDU im
+  Landkreis Leer und die Unterstützung durch die Kreistagsgruppe „Moin“. Eine Unterstützung durch
+  Bündnis&nbsp;90/Die&nbsp;Grünen ließ sich nicht unabhängig bestätigen; auf dem Wahlvorschlag steht
+  er als parteiloser Bewerber.
+</div>
+</section>
+
+<section class="page-break">
+<h2>Gesundheit, Ärzte und Pflege</h2>
+<p>Der Abend begann mit dem Thema, das nach Aussage der Moderation die meisten Leserfragen
+ausgelöst hat. Alle drei sehen dieselbe Lage – sie ziehen daraus unterschiedliche Schlüsse
+darüber, was ein Landrat überhaupt tun kann.</p>
+
+<table>
+<tr><th>Wer</th><th>Position und Begründung</th></tr>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td><span class="pos">Attraktivität zuerst, dann kommen die Ärzte</span><br>
+  Die Region müsse so attraktiv werden, dass Ärztinnen und Ärzte mit ihren Familien herziehen;
+  wo das nicht reicht, sei ein Medibus für entlegene Dörfer denkbar. Er berichtet, auf Borkum
+  modernste augenheilkundliche Geräte gesehen zu haben, für die das Fachpersonal fehle. Sein
+  Schwerpunkt liegt auf der <b>Notfallversorgung</b>: Der Landkreis habe nur einen Notarzt, andere
+  Kreise zwei oder drei. Als Beispiel nennt er einen Hüftbruch auf Borkum, bei dem der Hubschrauber
+  wegen Sturm nicht fliegen konnte und die Patientin per Boot nach Emden gebracht werden musste.</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td><span class="pos">Ausbildungswege statt Prämienwettlauf</span><br>
+  Verweist auf das Stipendienprogramm des Kreises – 45 Ärztinnen und Ärzte seien derzeit „im Vorlauf“ –
+  und auf die Beteiligung an der European Medical School; wer während des Studiums abspringt, muss das
+  Stipendium verzinst zurückzahlen. Ähnliches gebe es bei Hebammen. Er warnt ausdrücklich vor einem
+  „ruinösen Überbietungswettbewerb“ mit Ansiedlungsprämien zwischen den Gemeinden und Landkreisen und
+  setzt stattdessen auf medizinische Versorgungszentren, unter anderem auf Borkum. Bei den Notärzten
+  widerspricht er Bade: Deren Zahl sei keine Wunschentscheidung, sondern Verhandlungssache mit den
+  Krankenkassen in einem landesweiten Konzept, das nicht an Kreisgrenzen halt macht.</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td><span class="pos">Zuständigkeiten klären, Telemedizin ausbauen</span><br>
+  Betont, dass vieles gar nicht beim Kreis liegt: Praxisräume seien Sache der Kommunen, der Zuschnitt
+  der Kassenärztlichen Vereinigung Bundespolitik. Was der Kreis könne, sei werben – und die
+  <b>Telemedizin</b> stärker ausbauen, gerade für die Inseln und abgelegene Bereiche. Er benennt die
+  ungleiche Verteilung zwischen Reiderland und Westoverledingen und den Fachärztemangel, der für ihn
+  selbst beim Zuzug ein Thema war.</td>
+</tr>
+</table>
+
+<h3>Die Dilemmafrage: Krankenhaus, Hausärzte oder Pflege?</h3>
+<table class="mini">
+<tr><td class="n w-bade">Bade</td><td class="v">Notfallmedizin – „wenn Menschenleben in Gefahr sind“</td></tr>
+<tr><td class="n w-groote">Groote</td><td class="v">Pflege – genügend Plätze, würdige Pflege, Vermittlungsportal</td></tr>
+<tr><td class="n w-voelker">Völker</td><td class="v">verweigert die Priorisierung – alle drei Bereiche unverzichtbar</td></tr>
+</table>
+<p class="small mute">Die Antwort auf die Verweigerung kam von der Moderation: Wer gewählt werde,
+werde als Politiker ohnehin Aufstände provozieren, das liege in der Natur der Sache.</p>
+</section>
+
+<section class="page-break">
+<h2>Wohnen und Bauen</h2>
+<p>Hier liegt der deutlichste Unterschied im Rollenverständnis: Wie viel darf ein Landkreis den
+zwölf Kommunen vorgeben?</p>
+
+<table>
+<tr><th>Wer</th><th>Position und Begründung</th></tr>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td><span class="pos">Standardisieren, Leerstand aktivieren, Masterplan</span><br>
+  Der größte Kostenblock sei nicht der Bau, sondern Planung und Genehmigung: Wer Monate oder Jahre
+  auf die Baugenehmigung wartet, zahlt Architekt und Bereitstellungszinsen mit. Er wirbt für
+  Standardisierung und modulares Bauen. Zweiter Schwerpunkt: <b>Leerstand</b> – er will ein
+  Leerstandsregister für Leer und beruft sich auf „Eigentum verpflichtet“. Dritter Punkt:
+  Nachverdichtung, etwa Wohnungsbau über Sportflächen im Zusammenhang mit dem Campus-Projekt.
+  Sein Vorschlag zum Schluss: ein gemeinsamer Masterplan Wohnen mit allen zwölf Kommunen.</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td><span class="pos">Instrumente nutzen, Bestand energetisch sanieren</span><br>
+  Der „Bauturbo“ liege bereit und solle intensiver genutzt werden; das Wohnraumversorgungskonzept
+  mit den Kommunen sei die Vorarbeit gewesen, ohne die es keine Förderung für sozialen Wohnungsbau
+  außerhalb der Stadt Leer gegeben hätte – eine eigene Wohnungsbaugesellschaft habe der Kreis nicht.
+  Marktmechanismen könne man nicht aushebeln, Baustoffe seien teurer geworden. Sein eigentliches Thema
+  ist die <b>energetische Sanierung des Bestands</b>, damit Wohnen auf dem Land bezahlbar bleibt.
+  Zur Flächenfrage stellt er klar: Das gibt nicht der Landkreis vor, das machen die Gemeinden – die
+  Bürgermeister „würden Puls kriegen“, wenn der Kreis ihnen vorschreiben wollte, wie zu bauen ist.</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td><span class="pos">Mehrparteienhäuser, Investoren, wirtschaftlich rechnen</span><br>
+  Baugebiete dürften nicht mehr nur aus Einfamilienhäusern bestehen; in Bunde entstünden im
+  Neubaugebiet Mehrparteienhäuser mit je vier Wohneinheiten. Der soziale Wohnungsbau sei im Landkreis
+  in den letzten Jahren zurückgegangen, dafür müsse der Kreis mit Investoren verhandeln. Beim Leerstand
+  bremst er: „Eigentum verpflichtet“ sei außerhalb kreiseigener Gebäude nur ein Appell, und eine
+  Altbausanierung koste oft mehr als ein Neubau – man müsse ausrechnen, was am Ende die günstigere
+  Miete ergibt. Beim Flächenverbrauch: senken ja, auf null setzen sei unrealistisch.</td>
+</tr>
+</table>
+<p class="small mute"><b>Einigkeit:</b> Auf die Frage, ob sie beim Thema Bauen auch unpopuläre
+Entscheidungen treffen und tragen würden, antworteten alle drei mit Ja.</p>
+</section>
+
+<section>
+<h2>Verkehr und Mobilität</h2>
+<p>Die Moderation räumte ein, dass Texte über Busverbindungen bei den Lesern regelmäßig durchfallen –
+und stellte trotzdem die Frage. Ergebnis: drei sehr verschiedene Zugänge, aber am Ende dieselbe
+Priorität.</p>
+
+<table>
+<tr><th>Wer</th><th>Position und Begründung</th></tr>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td><span class="pos">Radwege und Park-and-Ride nach niederländischem Vorbild</span><br>
+  Im Reiderland führen Busse teils leer; er setzt eher auf individuellen Nahverkehr und perspektivisch
+  auf autonome Technik. Sein stärkstes Argument sind die <b>Radwege</b>: Sie enden zu oft im Nichts,
+  im Vergleich zu den Niederlanden sei das keine echte Alternative zum Auto. Dazu Park-and-Ride wie in
+  Groningen und bessere Taktung über Kreisgrenzen hinweg – von Bunde nach Papenburg müsse man in Weener
+  umsteigen und brauche ewig. Er begrüßt die Wunderline und den Halt in Bunde, kritisiert aber, dass
+  das Deutschlandticket auf Borkum vor allem von Touristen genutzt und über die Einwohnerzahl
+  finanziert werde.</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td><span class="pos">Bilanz der letzten fünf Jahre</span><br>
+  Ein ÖPNV wie in Bremen oder Hannover sei unrealistisch, aber es sei einiges passiert: Stundentakt
+  ins südliche Kreisgebiet, Busverbindung Richtung Westerstede zu den Krankenhäusern und ein
+  <b>kostenloses Jugendticket für rund 16.000 junge Einwohner</b> – etwa 6.000 mehr, als Anspruch auf
+  Schülerbeförderung haben. Das Anrufbus-System funktioniere gut und müsse digitalisiert und
+  ausgebaut werden. Beim Individualverkehr nennt er 384 Kilometer Kreisstraßen und rund 250 Kilometer
+  begleitende Radwege und warnt anhand der Brückensperrungen davor, Infrastruktur zu spät zu
+  reparieren.</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td><span class="pos">Die letzte Meile ist das Problem</span><br>
+  Auf dem Land sei das Auto unverzichtbar, gleichzeitig sei das morgendliche Einpendeln nach Leer
+  „eine absolute Katastrophe“ – für 15 bis 20 Minuten Strecke brauche man eineinhalb Stunden. Er
+  hofft auf die Zugverbindung und, weit in der Zukunft, auf eine Durchbindung Richtung Bremen. In
+  die Zentren komme man gut, aus abgelegenen Bereichen nicht; der Anrufbus sei „definitiv
+  verbesserungsfähig“, dazu habe seine Fraktion Anträge im Kreistag gestellt. Die <b>letzte Meile</b>
+  sei das größte ungelöste Problem.</td>
+</tr>
+</table>
+
+<h3>Die Dilemmafrage: Straßen, Busse oder Radwege?</h3>
+<table class="mini">
+<tr><td class="n w-bade">Bade</td><td class="v">Straßenausbau – Infrastruktur in Schuss halten</td></tr>
+<tr><td class="n w-groote">Groote</td><td class="v">Straßenausbau – „vornehmlich“</td></tr>
+<tr><td class="n w-voelker">Völker</td><td class="v">Straßen und Brücken – „ganz eindeutig“</td></tr>
+</table>
+<p class="small mute">Merken Sie sich diese Reihe – in der Kartenrunde eine Minute später fällt die
+Antwort auf eine ganz ähnliche Frage anders aus.</p>
+</section>
+
+<section class="page-break">
+<h2>Die Kartenrunde: zehnmal Rot oder Grün</h2>
+<p>Zur Halbzeit bekamen die drei Bewerber je eine rote und eine grüne Karte und mussten zehn Fragen
+ohne Worte beantworten. Weil im Video niemand sagt, wer welche Karte hochhält, ist diese Runde
+im Transkript unsichtbar – sie ist aber der aufschlussreichste Teil des Abends. Die folgende Tabelle
+wurde deshalb <b>Einzelbild für Einzelbild aus der Videoaufzeichnung ausgewertet</b>: für jede Frage
+wurde der Moment gesucht, in dem alle drei Karten oben sind.</p>
+
+<table class="cards">
+<tr>
+  <th>Frage der Moderation (sinngemäß)</th>
+  <th class="hd-bade">Bade</th>
+  <th class="hd-groote">Groote</th>
+  <th class="hd-voelker">Völker</th>
+</tr>
+<tr><td class="q">1. Würden Sie für einen ausgeglichenen Kreishaushalt auch unpopuläre Kürzungen durchsetzen?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill nein">Nein</span></td></tr>
+<tr><td class="q">2. Würden Sie sich für ein Infrastrukturprojekt, das Sie für richtig halten, auch mit einer Bürgerinitiative anlegen?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td></tr>
+<tr><td class="q">3. Soll der Landkreis beim Klimaschutz verbindliche Ziele beschließen, auch wenn das Wirtschaft und Kommunen mehr kostet?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td></tr>
+<tr><td class="q">4. Würden Sie den Ausbau von Windkraft aktiv vorantreiben, selbst wenn es vor Ort massiven Widerstand gibt?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td></tr>
+<tr><td class="q">5. Halten Sie es für richtig, beim Thema Migration klar mehr Integration einzufordern, notfalls mit strengeren Vorgaben?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td></tr>
+<tr><td class="q">6. Sollte der Landkreis mehr Geld in Bus und Bahn stecken, auch wenn dafür an Straßenprojekten gespart werden muss?</td>
+  <td class="v"><span class="pill nein">Nein</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill nein">Nein</span></td></tr>
+<tr><td class="q">7. Würden Sie Krankenhäuser, Gesundheitsversorgung und Rettungsdienst im Zweifel höher gewichten als andere freiwillige Leistungen?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td></tr>
+<tr><td class="q">8. Sollte der Landkreis sämtliche Neben- und Lobbytätigkeiten des Landrats öffentlich machen?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td></tr>
+<tr><td class="q">9. Würden Sie bei besonders umstrittenen Projekten freiwillig mehr direkte Bürgerbeteiligung zulassen, auch wenn das Entscheidungen verzögert?</td>
+  <td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill ja">Ja</span></td><td class="v"><span class="pill nein">Nein</span></td></tr>
+<tr><td class="q">10. Braucht der Landkreis Leer aus Ihrer Sicht eher einen Verwalter als einen politischen Antreiber?</td>
+  <td class="v"><span class="pill nein">Nein</span></td><td class="v"><span class="pill nein">Nein</span></td><td class="v"><span class="pill nein">Nein</span></td></tr>
+</table>
+
+<div class="note small">
+  <b>Was diese Tabelle zeigt – und was nicht.</b> In sechs von zehn Fragen waren sich alle drei einig;
+  bei Frage&nbsp;2 kommentierte die Moderation selbst „dreimal ja“, was die Auswertung bestätigt.
+  Unterschiede gibt es nur an drei Stellen – und in allen dreien ist <b>Jens Völker</b> der Abweichler,
+  bei Frage&nbsp;6 gemeinsam mit Olaf Bade. Bemerkenswert ist Frage&nbsp;10: Alle drei lehnen den
+  reinen Verwalter ab und beanspruchen die Rolle des politischen Antreibers – auch der Kandidat, der
+  ansonsten am stärksten für Verwaltungseffizienz wirbt. Eine Karte ist kein Programm: Es gab keine
+  Begründungen und keine Nachfragen, und Frage&nbsp;6 steht in einer gewissen Spannung zu der
+  Prioritätenrunde eine Minute zuvor, in der auch Matthias Groote den Straßenausbau vorangestellt hatte.
+</div>
+</section>
+
+<section>
+<h2>Wirtschaft, Energie und Arbeitsplätze</h2>
+<p>Der längste inhaltliche Block des Abends – und der einzige, in dem es einen echten Schlagabtausch gab.</p>
+
+<table>
+<tr><th>Wer</th><th>Position und Begründung</th></tr>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td><span class="pos">Rahmenbedingungen und Unternehmenslotsen</span><br>
+  Zuerst müssten die Voraussetzungen stimmen: Wer erweitern will, brauche seine Genehmigung schnell.
+  Er will <b>Unternehmenslotsen</b> mit festem Ansprechpartner einführen, der intern nachhält, und
+  „den roten Läufer ausrollen“. Er verweist neidvoll aufs schuldenfreie Emsland und will dort
+  abschauen. Sein schärfster Vorwurf des Abends: Für die geplante Wasserstoffpipeline von Bunde
+  Richtung Ruhrgebiet seien entlang der Trasse 13 Abnahmepunkte gebucht worden – der Landkreis Leer
+  habe auf Anfrage geantwortet, man brauche das zunächst nicht. Später nachzurüsten sei acht- bis
+  zehnmal teurer.</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td><span class="pos">Region statt Einzelkämpfer</span><br>
+  Beim Fachkräftethema arbeite man entlang der Ems-Achse zusammen, statt sich Konkurrenz zu machen;
+  Ziel sei auch, Abgewanderte nach dem Studium zurückzuholen. Ostfriesland teile sich die Schwerpunkte
+  auf – Wittmund Tourismus, Aurich Energie, Leer Maritimes und Digitalisierung; allein in Leer
+  arbeiteten weit über 1.000 Softwareentwickler. Sein Vorzeigeprojekt ist die Anerkennung der
+  Küstenregion als <b>Net-Zero-Valley</b>, das europäische Genehmigungserleichterungen und
+  Förderzugänge bringen soll: Die Region sei „Energiedrehscheibe Nummer eins“, bisher werde der Strom
+  aber nur durchgeleitet, ohne Wertschöpfung vor Ort. Vom Bund fordert er Investitionssicherheit
+  statt „Chaos“.</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td><span class="pos">Industriegebiet und eine „Steckdose“ für Energie</span><br>
+  Arbeitsplätze sichern und neue schaffen – mit Blick auf die Unsicherheit bei Meyer Werft und VW
+  müsse sich der Kreis breiter aufstellen. Wichtigster Hebel sei das <b>Industriegebiet Leer-Nord</b>
+  mit Kreisbeteiligung, weil dort im Unterschied zu kommunalen Gewerbegebieten Großansiedlungen
+  möglich seien. Bei den Konverterpunkten brauche es „eine Steckdose“, damit energieintensive
+  Unternehmen hierbleiben oder herkommen; zusätzlich wirbt er für Wasserstoffnetze und, auf
+  Bundesebene, für Strompreiszonen.</td>
+</tr>
+</table>
+<p class="small mute">In der Erwiderung auf Bades Pipeline-Kritik wurde auf einen Anschluss für den
+Gewerbepark Reiderland verwiesen, der jetzt komme. Die Aufzeichnung lässt an dieser Stelle nicht
+zweifelsfrei erkennen, wer was gesagt hat; der Punkt blieb inhaltlich ungeklärt.</p>
+
+<h3>Vereinbarkeit von Familie und Beruf</h3>
+<table>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td>Kitas und Schulen modular bauen, damit man sie versetzen kann, wenn sich Bedarfe verschieben.
+  Arbeitgeber müssten mitspielen; von Stechuhr und Anwesenheitskontrolle hält er nichts.</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td>20 Millionen Euro fließen in die Kindertagesstätten, mit einer langfristigen Einigung zwischen
+  Kreis und Kommunen; dazu der Ausbau der Ganztagsschulen und ein Siegel für familienfreundliche
+  Arbeitgeber, dessen Vergabe der Kreis überprüft. Richtung Hannover und Berlin merkt er an, dass die
+  Umsetzung beschlossener Programme die Kommunen teilweise überfordert.</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td>Kita und Ganztag seien Grundvoraussetzung, aber nicht das Ganze: Mit dem Mehrgenerationenhaushalt
+  sei eine Betreuungsressource verloren gegangen. Er wirbt für alternative Wohnformen, in denen sich
+  Verwandte wieder an Haushalt und Kinderbetreuung beteiligen können.</td>
+</tr>
+</table>
+</section>
+
+<section>
+<h2>Schulen, Berufsschulen und Digitalisierung</h2>
+<p>Auffällig: Die Fragen kamen erkennbar aus den Schulen selbst – von Lehrkräften und von den
+berufsbildenden Schulen. Der Kreis ist Träger, gebaut und saniert wird ihm zu langsam. Das bestreitet
+auch der Amtsinhaber nicht.</p>
+
+<table>
+<tr><th>Wer</th><th>Position und Begründung</th></tr>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td><span class="pos">Instandhalten statt sanieren</span><br>
+  Auf die Frage nach einem Masterplan für die Schulen antwortet er trocken: „Noch nicht, aber der wird
+  kommen.“ Sein Kernpunkt ist Vorsorge: Er erzählt von einer rissigen Dachhaut an einer Leeraner Schule,
+  deren Austausch beantragt, aber nicht ausgeführt worden sei – erst regne es hinein, dann seien
+  Dachkonstruktion und Dämmung hin, am Ende stehe eine Kernsanierung. Das sei „Vernichtung von
+  Kapital“. Er will alle Gebäude katalogisieren, wie er es aus den Niederlanden kenne, und
+  ausschreiben, bevor etwas kaputtgeht – in Ruhe kaufe man günstiger. Außerdem: Was nützt Breitband,
+  wenn das Dach undicht ist, und was nützen Tablets, wenn es im Landkreis kartierte Funklöcher gibt?</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td><span class="pos">Eigene IT, Glasfaser, Sondervermögen</span><br>
+  Der Kreis habe eine eigene IT und müsse Betreuung nicht extern einkaufen; alle Schulen im Landkreis
+  seien ans Glasfasernetz angeschlossen, vieles werde fernüberwacht. Allein in den Sommerferien seien
+  2,7 Millionen Euro in die Sanierung geflossen. Aus dem Sondervermögen will er dem neuen Kreistag
+  vorschlagen, <b>über 50 Millionen Euro in Bildungseinrichtungen</b> zu stecken. Auf Borkum ist eine
+  neue Berufsschule an der Inselschule geplant, auf dem Festland wird ein Sanierungskonzept
+  abgearbeitet. Dass es zu lange dauert, räumt er ein – Corona, Baupreissteigerungen, Fachkräftemangel –
+  und verweist auf serielles Sanieren als neuen Weg.</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td><span class="pos">Wertschätzung für die Berufsschulen</span><br>
+  Der Schulsanierungsplan habe seinen Zweck erfüllt, aber sichtbar sei das nicht überall – er berichtet
+  von Schülern, die ihn am selben Vormittag nach dem Zustand der Toiletten gefragt hätten. Sein
+  Schwerpunkt: Wenn die Gesellschaft die Ausbildung wertschätzen wolle, müsse sich das auch baulich
+  zeigen. Seine Fraktion habe beantragt, die Planung der Berufsschulen an ein externes Unternehmen
+  auszulagern, um Tempo zu gewinnen. Die iPads des Landes seien da, ihre Betreuung bleibe aber an den
+  Lehrkräften hängen – dafür müssten Mittel mitkommen.</td>
+</tr>
+</table>
+<p class="small mute"><b>Einigkeit bei der Mensa an den berufsbildenden Schulen:</b> Alle drei sind
+dafür. Groote will sie gemeinsam mit der Schule planen, Völker will vorher den tatsächlichen Bedarf
+erheben, Bade fragt, warum sie nicht längst da ist – bei mehreren tausend Schülern gebe es dort
+derzeit rund 50 Sitzplätze.</p>
+</section>
+
+<section class="page-break">
+<h2>Klima, Wasser und Katastrophenschutz</h2>
+<table>
+<tr><th>Wer</th><th>Position und Begründung</th></tr>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td>Bringt eigene Bauprojekte ein: eine mit dem Fraunhofer-Institut entwickelte Klimaschutzfassade
+  gegen innerstädtische Aufheizung, dazu Begrünung und Wasserspielplätze. Wichtig sei die
+  Zusammenarbeit über Kreis- und Landesgrenzen, „Hochwasser macht nicht an der Grenze halt“. Seine
+  konkrete Nachfrage an die Verwaltung: Wo sind die <b>Notstromaggregate für die Pumpwerke</b>, wenn
+  bei Hochwasser der Strom ausfällt? (Groote: „Die haben wir.“) Beim Grundwasser weist er darauf hin,
+  dass Pools rund ein Drittel des Haushaltswasserbedarfs binden, und will illegale Müllentsorgung
+  konsequenter angehen. Außerdem fehle ihm die Information der Bevölkerung im Vorfeld – Vorräte,
+  Medikamente, Batterien: „Wenn der Ernstfall eintritt, können wir nicht anfangen zu informieren.“</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td>Setzt beim Stichwort <b>Klimaanpassung</b> an: Selbst bei sofortigem Stopp der Emissionen gebe es
+  einen Bremsweg von 20 bis 25 Jahren. Nach dem Weihnachtshochwasser 2023 arbeite man eng mit den
+  Katastrophenschutzeinheiten, THW und Kreisfeuerwehr; in eine neue feuerwehrtechnische Zentrale
+  fließen 38 Millionen Euro. Beim Masterplan Ems und der flexiblen Tidesteuerung erwartet er vom Land
+  Niedersachsen, dass die dauerhaften Mehrkosten beim Sielzug nicht auf die Beitragszahler umgelegt
+  werden. Beim Trinkwasser verweist er auf die untere Wasserbehörde, Probenahmen und einen neuen
+  Tanklastzug, der im Notfall auch Trinkwasser fahren kann. Und er spricht offen über kritische
+  Infrastruktur und Drohnen über der Nordsee: „Wir sind nicht mehr ganz im Frieden, noch nicht ganz
+  im Krieg.“</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td>Betrachtet das Thema von der Landwirtschaft her: Trockenheit und Dürre seien tägliches Thema,
+  die Extreme nähmen in beide Richtungen zu. Katastrophenschutz sei die größte Pflichtaufgabe des
+  Kreises. Sein eigener Akzent liegt auf <b>Prävention in den Kommunen</b> – Kanalquerschnitte,
+  weniger Beton und mehr Grünflächen in Ortskernen – und auf der Rolle des Kreises als vernetzende,
+  koordinierende Instanz, die Best-Practice-Beispiele weitergibt. Bei Wassermangel könne man nicht
+  durch die Gärten gehen und Pools kontrollieren, sondern müsse an die Vernunft appellieren.</td>
+</tr>
+</table>
+</section>
+
+<section>
+<h2>Verwaltung, Bürgernähe und Künstliche Intelligenz</h2>
+<p>Die Schlussrunde war die einzige, in der es persönlich wurde – und die einzige, in der der
+Amtsinhaber ausdrücklich zur Rechtfertigung aufgefordert wurde.</p>
+
+<table>
+<tr><th>Wer</th><th>Position und Begründung</th></tr>
+<tr>
+  <td class="who w-bade">Olaf Bade</td>
+  <td><span class="pos">Dienstleistungsgedanke und Bürgersprechstunde</span><br>
+  Er will die Behörde auf einen Dienstleistungsgedanken umstellen – Gesetze gälten weiter, aber
+  <b>Ermessensspielräume</b> sollten ausgeschöpft statt gemieden werden: „Wir gucken nicht nur, was
+  nicht geht.“ Ganz konkret kündigt er eine <b>Bürgersprechstunde</b> an: zwölf Kommunen, zwölf
+  Monate – einmal im Monat in eine Gemeinde. Den Mitarbeitenden will er Spielraum und Fehlertoleranz
+  geben und sich vor sie stellen. Als Beleg für Handlungsbedarf nennt er, der Landkreis sei in einem
+  Ranking von Platz&nbsp;91 auf Platz&nbsp;273 abgerutscht. Kleinere Ärgernisse nimmt er auch mit:
+  Warum sind Formulare nicht vorausgefüllt?</td>
+</tr>
+<tr>
+  <td class="who w-groote">Matthias Groote</td>
+  <td><span class="pos">„Es geht nach vorne, und zwar massiv“</span><br>
+  Der Kreis habe eine KI-Strategie beschlossen, eine zweistellige Zahl an Projekten sei in Umsetzung.
+  Konkret nennt er die automatische Protokollierung – die rechtssicher sein müsse – und die
+  Antragssachbearbeitung, bei der er ausdrücklich warnt: Dort werde über Existenzen entschieden,
+  in den Niederlanden sei über eine fehlgeschlagene Digitalisierung eine Regierung gestürzt. Rund
+  900 Verwaltungsprozesse würden durchgesehen, damit kein schlechter analoger Prozess zu einem
+  schlechten digitalen werde. Mit „Open Kreishaus“ seien viele Leistungen schon online. Bei allem
+  Digitalen bleibe unverzichtbar, dass Menschen mit Menschen reden. Datenschutz sei wichtig, dürfe
+  aber „kein Verhinderungswerkzeug“ sein.</td>
+</tr>
+<tr>
+  <td class="who w-voelker">Jens Völker</td>
+  <td><span class="pos">Nachvollziehbarkeit und KI-Vorprüfung</span><br>
+  Die Verwaltung müsse dem Menschen dienen, und ihre Entscheidungen müssten nachvollziehbar sein –
+  daran fehle es in vielen Punkten. Sein Ziel ist ausdrücklich <b>nicht mehr Personal</b>, sondern
+  schnellere Entscheidungen mit dem vorhandenen. Konkret: KI zur Vorprüfung von Anträgen ausbauen,
+  am Ende schaue immer ein Mensch darauf und treffe die Entscheidung. Beim Datenschutz zieht er eine
+  klare Linie – Server in Europa, nicht in China oder den USA; wenn das erfüllt sei, dürfe Datenschutz
+  weitere Digitalisierung nicht blockieren.</td>
+</tr>
+</table>
+<p class="small mute">Aus der Runde kam der Einwand, Grootes Verweis auf die Niederlande treffe nur
+zum Teil zu, dort habe es auch politische Ursachen gegeben. Wer genau widersprach, ist in der
+Aufzeichnung nicht eindeutig.</p>
+
+<h3>Wo dauert es heute zu lange?</h3>
+<table class="mini">
+<tr><td class="n w-bade">Bade</td><td class="v">Genehmigungen in allen Formen – fehlende Planungssicherheit bremst</td></tr>
+<tr><td class="n w-groote">Groote</td><td class="v">Bürokratie – zu viele Vorschriften, Gesetze gehören auf den Prüfstand</td></tr>
+<tr><td class="n w-voelker">Völker</td><td class="v">Verwaltungsabläufe generell – Voraussetzung dafür, die Wirtschaft anzukurbeln</td></tr>
+</table>
+</section>
+
+<section>
+<h2>Wo die eigentlichen Unterschiede liegen</h2>
+<p>Der Abend war, wie die Moderation selbst anmerkte, sehr harmonisch. Die Trennlinien liegen deshalb
+weniger in einzelnen Sachfragen als in drei Grundhaltungen.</p>
+
+<div class="axis">
+  <div class="t">1. Bilanz fortsetzen oder Kurs wechseln?</div>
+  <p class="small">Matthias Groote argumentiert fast durchgehend aus laufenden Programmen – jede Frage
+  beantwortet er mit dem, was bereits auf den Weg gebracht wurde. Olaf Bade argumentiert aus Defiziten
+  und Vergleichen: Emsland, Niederlande, Groningen, andere Landkreise machen es vor. Jens Völker
+  argumentiert aus der Oppositionsrolle im Kreistag und verweist auf eigene Anträge, die nicht schnell
+  genug wirkten.</p>
+  <div class="poles">
+    <div><span class="ph">Der eine Pol</span>Erfahrung und Anschlussfähigkeit nach Hannover, Berlin
+    und Brüssel; laufende Vorhaben nicht abbrechen.</div>
+    <div><span class="ph">Der andere Pol</span>Frischer Blick von außen beziehungsweise aus dem
+    Kreistag; Tempo und Vergleich mit anderen Regionen.</div>
+  </div>
+</div>
+
+<div class="axis">
+  <div class="t">2. Wie weit reicht die Macht eines Landrats?</div>
+  <p class="small">Groote und Völker markieren immer wieder Zuständigkeitsgrenzen: Praxen sind Sache
+  der Kommunen, der Zuschnitt der Kassenärztlichen Vereinigung ist Bundespolitik, Bauleitplanung machen
+  die Gemeinden, Notarztstandorte werden mit den Krankenkassen verhandelt. Bade dagegen sucht überall
+  den Hebel – Ermessensspielräume, Leerstandsregister, Unternehmenslotsen, gemeinsame Masterpläne mit
+  den zwölf Kommunen. Die Frage dahinter: Ist ein Landrat vor allem Verhandler in einem engen Korsett
+  oder Koordinator, der mehr herausholen kann, als er muss?</p>
+</div>
+
+<div class="axis">
+  <div class="t">3. Effizienz oder Personal?</div>
+  <p class="small">Alle drei wollen schnellere Verfahren, aber auf verschiedenen Wegen: Völker
+  ausdrücklich ohne zusätzliches Personal, dafür mit KI-Vorprüfung und ausgelagerter Planung. Groote
+  mit einer breiten Digitalisierungs- und KI-Strategie plus dem Hinweis, dass Fachkräftemangel auch
+  die Kreisverwaltung trifft. Bade mit Standardisierung, Vorsorgeplanung und dem Prinzip, Bewährtes
+  von anderen zu kopieren statt neu zu entwickeln.</p>
+</div>
+</section>
+
+<section>
+<h2>Fragen, die Ihre Entscheidung erleichtern</h2>
+
+<div class="q"><div class="qt">Wollen Sie Kontinuität oder einen Wechsel?</div>
+<p>Das ist die erste und wahrscheinlich wichtigste Sortierung an diesem Wahlzettel. Der Amtsinhaber
+tritt nach zehn Jahren erneut an und kann auf eine lange Liste laufender Vorhaben verweisen; beide
+Herausforderer begründen ihre Kandidatur damit, dass es zu langsam geht.</p></div>
+
+<div class="q"><div class="qt">Was soll Ihr Landrat gelernt haben?</div>
+<p>Die drei Lebensläufe stehen für drei sehr verschiedene Kompetenzen – und keiner davon ist
+offensichtlich der richtige.</p>
+<table class="mini">
+<tr><td class="n w-bade">Bade</td><td class="v">Bau, Projektsteuerung, Verwaltung im Ausland, Wirtschaft</td></tr>
+<tr><td class="n w-groote">Groote</td><td class="v">zehn Jahre Kreisverwaltung, davor elf Jahre Europapolitik</td></tr>
+<tr><td class="n w-voelker">Völker</td><td class="v">Landwirtschaft, Vertrieb, Kommunal- und Kreistagspolitik</td></tr>
+</table></div>
+
+<div class="q"><div class="qt">Was ist Ihr wichtigstes Einzelthema?</div>
+<p>Wenn Sie ein Thema haben, das für Sie den Ausschlag gibt, hilft der Blick auf die Schwerpunkte
+des Abends – dorthin ging bei jedem die meiste Energie.</p>
+<table class="mini">
+<tr><td class="n w-bade">Bade</td><td class="v">Bauen und Genehmigen, Leerstand, Instandhaltung, Bürgernähe</td></tr>
+<tr><td class="n w-groote">Groote</td><td class="v">Energie und Wertschöpfung, Katastrophenschutz, Pflege, Bildungsinvestitionen</td></tr>
+<tr><td class="n w-voelker">Völker</td><td class="v">Industrieansiedlung, Berufsschulen, letzte Meile im ÖPNV, Verwaltungseffizienz</td></tr>
+</table></div>
+
+<div class="q"><div class="qt">Wie wichtig ist Ihnen die Kartenrunde?</div>
+<p>Wenn Sie bei Haushaltskürzungen, bei der Umschichtung von Straßen- zu Busgeld oder bei mehr
+direkter Bürgerbeteiligung eine klare Haltung haben, dann trennt genau das die Bewerber – an allen
+anderen Stellen lagen die Karten gleich.</p></div>
+
+<div class="q"><div class="qt">Rechnen Sie mit einer Stichwahl?</div>
+<p>Bei drei Bewerbern ist eine absolute Mehrheit im ersten Wahlgang nicht selbstverständlich. Nach
+ihrer eigenen Einschätzung auf einer Skala von 1 bis 10 gefragt, gaben sich Bade eine 7, Völker
+eine 7 bis 8 und Groote eine 8 bis 9. Wenn Sie einen Kandidaten wollen, aber einen bestimmten
+anderen verhindern möchten, lohnt der Gedanke an den zweiten Wahlgang am 27.&nbsp;September.</p></div>
+</section>
+
+<section class="page-break">
+<h2>Was an diesem Abend offen blieb</h2>
+<ul>
+<li><b>Die Finanzen.</b> Der geplante Block zu Kreishaushalt und Finanzen entfiel aus Zeitgründen.
+Damit blieb ausgerechnet die Frage unbeantwortet, die hinter fast allen anderen steht – und die
+Kartenfrage nach unpopulären Kürzungen blieb ohne jede Konkretisierung.</li>
+<li><b>Migration.</b> Das Thema kam ausschließlich als Ja-/Nein-Karte vor. Was „notfalls strengere
+Vorgaben“ für die drei jeweils bedeutet, wurde nicht gefragt.</li>
+<li><b>Die Krankenhäuser.</b> Trotz des Gesundheitsblocks wurde über die Zukunft der Klinikstandorte
+im Landkreis nicht gesprochen; es ging um Ärzte, Pflege und Rettungsdienst.</li>
+<li><b>Bades Ranking-Behauptung.</b> Der Absturz von Platz&nbsp;91 auf Platz&nbsp;273 blieb
+unwidersprochen – welches Ranking gemeint ist und worauf es sich bezieht, wurde nicht gesagt und
+ließ sich nicht nachprüfen.</li>
+<li><b>Der Wasserstoff-Anschluss.</b> Ob der Landkreis eine Chance verpasst hat oder ob mit dem
+Gewerbepark Reiderland alles Nötige läuft, wurde im Wortwechsel nicht geklärt.</li>
+<li><b>Der Rest des Programms.</b> Ein Podiumsabend zeigt Schwerpunkte und Reaktionsvermögen, nicht
+das vollständige Programm. Die Ostfriesen-Zeitung hat für den Landkreis zusätzlich einen Wahlcheck
+mit 30 Fragen und ein Dossier mit Porträts veröffentlicht.</li>
+</ul>
+</section>
+
+<section>
+<h2>Praktisches zur Wahl</h2>
+<table>
+<tr><td class="who" style="width:30%">Wahltag</td><td>Sonntag, 13. September 2026, Wahllokale in der Regel von 8 bis 18 Uhr. Gewählt werden am selben Tag auch der Kreistag sowie Räte und Bürgermeister in den Kommunen.</td></tr>
+<tr><td class="who">Stichwahl</td><td>Sonntag, 27. September 2026, falls niemand mehr als die Hälfte der gültigen Stimmen erhält. Dann treten die beiden Bestplatzierten erneut gegeneinander an.</td></tr>
+<tr><td class="who">Amtszeit</td><td>Acht Jahre, beginnend am 1. November 2026. Niedersachsen hat die Amtszeit der hauptamtlichen Bürgermeister und Landräte Anfang 2025 von fünf auf acht Jahre verlängert – dieser Wahlgang ist der erste, für den das gilt.</td></tr>
+<tr><td class="who">Briefwahl</td><td>Kann bei der Gemeinde beantragt werden, in der Sie im Wählerverzeichnis stehen. Wer Briefwahl nutzt, sollte an den möglichen zweiten Wahlgang denken – dafür sind die Unterlagen gesondert zu beantragen, sofern die Gemeinde das nicht automatisch mitverschickt.</td></tr>
+<tr><td class="who">Die Bewerber</td><td>Olaf Bade (parteilos), Matthias Groote (SPD), Jens Völker (FDP). Andere Wahlvorschläge wurden für die Landratswahl nicht zugelassen.</td></tr>
+</table>
+</section>
+
+<footer class="small mute">
+<p><b>Quelle:</b> Videoaufzeichnung der Podiumsdiskussion „Diskussion zur Landratswahl in Leer –
+Kandidaten stellen sich vor“, aufgezeichnet am 20. August 2026 im Sparkassenforum in Leer,
+veröffentlicht von ostfriesen.tv; Moderation: Lars Reckermann (Chefredakteur) und Karin Lüppen
+(Redakteurin), Ostfriesen-Zeitung/General-Anzeiger. Laufzeit rund zwei Stunden. Ergänzend wurden für
+Namen, Lebensläufe und Wahltermine öffentliche Quellen herangezogen (Landkreis Leer,
+Ostfriesen-Zeitung, Nordwest-Zeitung, Nds. Ministerium für Inneres, Sport und Digitalisierung,
+Kandidatenwebsites).</p>
+<p>Zusammengestellt am 5. September 2026. Alle Aussagen sinngemäß, nicht wörtlich.
+Keine Wahlempfehlung.</p>
+</footer>
+
+</body>
+</html>

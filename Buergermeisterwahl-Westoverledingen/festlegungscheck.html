@@ -1,0 +1,567 @@
+<title>Wer legt sich fest</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --ground:#f5f3ef;
+  --surface:#ffffff;
+  --surface-2:#eae6df;
+  --ink:#1f1c17;
+  --muted:#6b6359;
+  --line:#ddd7ce;
+  --line-strong:#bdb4a7;
+  --accent:#2c3d63;
+  --accent-soft:#e4e7ef;
+  --accent-mute:#8a95ad;
+  --agree:#1f6b56;
+  --agree-soft:#e0ede8;
+  --disagree:#a2483a;
+  --disagree-soft:#f6e7e3;
+  --shadow:0 1px 2px rgba(31,28,23,.06), 0 10px 26px -20px rgba(31,28,23,.55);
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#15130f;
+    --surface:#1d1a15;
+    --surface-2:#272319;
+    --ink:#ece7df;
+    --muted:#a39a8c;
+    --line:#332e26;
+    --line-strong:#4b443a;
+    --accent:#93a7d4;
+    --accent-soft:#1e2536;
+    --accent-mute:#5b6683;
+    --agree:#5aa78d;
+    --agree-soft:#18261f;
+    --disagree:#d1806f;
+    --disagree-soft:#2b1c19;
+    --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -20px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#15130f;
+  --surface:#1d1a15;
+  --surface-2:#272319;
+  --ink:#ece7df;
+  --muted:#a39a8c;
+  --line:#332e26;
+  --line-strong:#4b443a;
+  --accent:#93a7d4;
+  --accent-soft:#1e2536;
+  --accent-mute:#5b6683;
+  --agree:#5aa78d;
+  --agree-soft:#18261f;
+  --disagree:#d1806f;
+  --disagree-soft:#2b1c19;
+  --shadow:0 1px 2px rgba(0,0,0,.45), 0 10px 26px -20px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box;}
+body{
+  background:var(--ground);color:var(--ink);
+  font-family:var(--serif);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:680px;margin:0 auto;padding:28px 20px 64px;}
+
+.eyebrow{
+  font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px;
+}
+h1{
+  font-family:var(--sans);font-weight:700;font-size:clamp(30px,7vw,46px);
+  line-height:1.03;letter-spacing:-.025em;margin:0 0 14px;text-wrap:balance;
+}
+.standfirst{font-size:18px;margin:0 0 18px;max-width:60ch;}
+.disclaimer{
+  font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--muted);
+  border-left:2px solid var(--line-strong);padding:2px 0 2px 14px;margin:0 0 30px;max-width:62ch;
+}
+.disclaimer b{color:var(--ink);font-weight:600;}
+
+.progress{display:flex;flex-direction:column;gap:9px;margin-bottom:16px;}
+.rail{display:flex;gap:3px;}
+.tick{flex:1;height:5px;background:var(--line);border-radius:1px;transition:background .18s ease;}
+.tick.done{background:var(--accent);}
+.tick.now{background:var(--ink);}
+.tick.skip{background:var(--line-strong);}
+.counter{
+  display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+  font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;
+}
+.counter .topic{text-align:right;}
+
+.sheet{
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  box-shadow:var(--shadow);padding:24px 22px 20px;
+}
+.src{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  border:1px solid var(--line);border-radius:2px;padding:3px 8px;margin-bottom:16px;
+}
+.src .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;}
+.these{
+  font-family:var(--serif);font-size:clamp(21px,4.4vw,25px);line-height:1.32;
+  font-weight:600;margin:0 0 8px;text-wrap:balance;
+}
+.hint{font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--muted);margin:0 0 20px;}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.big{
+  font-family:var(--sans);font-size:15px;font-weight:600;color:#fff;
+  border:none;border-radius:3px;padding:17px 14px;cursor:pointer;
+  transition:transform .12s ease,filter .12s ease;
+}
+.big.ja{background:var(--agree);}
+.big.nein{background:var(--disagree);}
+.big:hover{transform:translateY(-2px);filter:brightness(1.08);}
+.big[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:2px;}
+.minor{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.minorbtn{
+  font-family:var(--sans);font-size:14px;font-weight:500;
+  background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);
+  border-radius:3px;padding:11px 10px;cursor:pointer;transition:background .12s ease;
+}
+.minorbtn:hover{background:var(--surface-2);}
+.minorbtn[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+
+.rowtools{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  margin-top:18px;padding-top:14px;border-top:1px solid var(--line);flex-wrap:wrap;
+}
+.weight{display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-family:var(--sans);font-size:13px;color:var(--muted);}
+.weight input{width:15px;height:15px;accent-color:var(--accent);margin:0;}
+.weight.on{color:var(--ink);font-weight:500;}
+.linkbtn{
+  font-family:var(--sans);font-size:13.5px;background:none;border:none;padding:4px 0;
+  color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px;
+}
+.linkbtn[disabled]{color:var(--muted);opacity:.5;cursor:default;text-decoration:none;}
+.keys{font-family:var(--mono);font-size:11px;color:var(--muted);margin:14px 0 0;text-align:center;}
+
+h2{
+  font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin:38px 0 14px;
+}
+h2:first-child{margin-top:0;}
+.lede2{font-family:var(--sans);font-size:13.5px;color:var(--muted);margin:-6px 0 16px;}
+
+.res{display:flex;flex-direction:column;gap:15px;}
+.cand{display:grid;grid-template-columns:1fr auto;gap:3px 12px;align-items:baseline;}
+.cand .nm{font-family:var(--sans);font-weight:600;font-size:16.5px;}
+.cand .pty{font-family:var(--sans);font-weight:400;font-size:12.5px;color:var(--muted);}
+.cand .pct{font-family:var(--mono);font-size:19px;font-variant-numeric:tabular-nums;font-weight:500;color:var(--accent-mute);}
+.bar{grid-column:1/-1;height:11px;background:var(--surface-2);border-radius:2px;overflow:hidden;}
+.bar i{display:block;height:100%;border-radius:2px;background:var(--accent-mute);transition:width .5s cubic-bezier(.2,.7,.3,1);}
+.cand .meta{grid-column:1/-1;font-family:var(--sans);font-size:12px;color:var(--muted);}
+.cand.lead .pct{color:var(--accent);font-weight:500;}
+.cand.lead .bar i{background:var(--accent);}
+.cand.lead .nm{color:var(--accent);}
+
+.readout{
+  font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--muted);
+  background:var(--accent-soft);border-radius:3px;padding:13px 15px;margin-top:20px;
+}
+.readout b{color:var(--ink);font-weight:600;}
+
+/* Festlegungsgrad */
+.fest{display:flex;flex-direction:column;gap:11px;}
+.frow{display:grid;grid-template-columns:1fr auto;gap:3px 10px;align-items:baseline;}
+.frow .fn{font-family:var(--sans);font-size:14.5px;font-weight:600;}
+.frow .fv{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;}
+.cells{grid-column:1/-1;display:flex;gap:3px;}
+.cell{flex:1;height:16px;border-radius:1px;}
+.cell.clear{background:var(--accent);}
+.cell.mid{background:var(--accent-soft);border:1px solid var(--accent-mute);}
+.cell.none{background:repeating-linear-gradient(45deg,var(--line) 0 3px,transparent 3px 6px);border:1px solid var(--line);}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;font-family:var(--sans);font-size:12px;color:var(--muted);}
+.legend span{display:inline-flex;align-items:center;gap:6px;}
+.legend i{width:14px;height:12px;border-radius:1px;display:block;}
+
+.cmp{display:flex;flex-direction:column;gap:10px;}
+.cmpitem{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:13px 15px;}
+.cmpitem .t{font-size:15.5px;line-height:1.4;margin:0 0 10px;}
+.cmpitem .t .no{font-family:var(--mono);font-size:12px;color:var(--muted);margin-right:7px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{
+  font-family:var(--sans);font-size:11.5px;font-weight:500;
+  border:1px solid var(--line-strong);border-radius:2px;padding:2px 7px;color:var(--muted);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.chip b{font-weight:600;color:var(--ink);}
+.chip.match{border-color:var(--agree);background:var(--agree-soft);}
+.chip.match b{color:var(--agree);}
+.chip.miss{border-color:var(--disagree);background:var(--disagree-soft);}
+.chip.miss b{color:var(--disagree);}
+.chip.you{border-color:var(--ink);background:var(--surface-2);}
+.chip.you b{color:var(--ink);}
+
+details{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;}
+summary{
+  font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;
+  color:var(--accent);list-style:none;padding:4px 0;
+}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:"› ";}
+details[open] summary::before{content:"⌄ ";}
+.tablewrap{overflow-x:auto;margin-top:12px;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;min-width:640px;font-family:var(--sans);font-size:12.5px;}
+th,td{text-align:left;padding:8px 7px;border-bottom:1px solid var(--line);vertical-align:top;}
+th{font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;border-bottom:1.5px solid var(--line-strong);}
+td.tx{width:42%;line-height:1.4;}
+td.p{text-align:center;white-space:nowrap;font-weight:600;}
+.p.ja{color:var(--agree);} .p.nein{color:var(--disagree);} .p.mid{color:var(--muted);} .p.na{color:var(--line-strong);font-weight:400;}
+
+footer{
+  margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.5px;line-height:1.6;color:var(--muted);
+}
+footer p{margin:0 0 9px;}
+footer b{color:var(--ink);font-weight:600;}
+
+.restart{
+  font-family:var(--sans);font-size:14px;font-weight:600;margin-top:26px;
+  background:var(--ink);color:var(--ground);border:none;border-radius:3px;
+  padding:12px 20px;cursor:pointer;
+}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+@media (max-width:420px){.cards,.minor{grid-template-columns:1fr;}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Bürgermeisterwahl Westoverledingen · 13. September 2026</p>
+  <h1>Wer legt sich fest</h1>
+  <p class="standfirst">Fünf Bewerber, ein Rathaus, acht Jahre Amtszeit. Beim Podium von
+  General-Anzeiger und Ostfriesen-Zeitung am 3.&nbsp;September 2026 in Flachsmeer lagen die fünf
+  bei vielen Sachfragen nah beieinander – der Unterschied lag oft darin, wer sich festlegte und
+  wer erst rechnen wollte. Beantworten Sie elf Thesen aus diesem Abend und sehen Sie, wer zu
+  Ihnen passt.</p>
+  <p class="disclaimer"><b>Was das hier ist:</b> eine private Auswertung der öffentlichen
+  Videoaufzeichnung. Anders als beim Landrats-Podium in Leer gab es an diesem Abend
+  <b>keine durchgehende Ja-/Nein-Kartenrunde</b>. Die Positionen sind deshalb aus den
+  Wortbeiträgen abgeleitet – ausgenommen die Grundsteuerfrage, bei der Karten hochgehalten
+  wurden. Wo jemand sich bewusst nicht festgelegt hat, steht das auch so da. Diese Seite stammt
+  <b>nicht</b> von der Ostfriesen-Zeitung, nicht von ostfriesen.tv und nicht von den Kandidaten.
+  Sie ist keine Wahlempfehlung.</p>
+</header>
+
+<main>
+<section id="quiz" aria-label="Fragebogen">
+  <div class="progress">
+    <div class="rail" id="rail" aria-hidden="true"></div>
+    <div class="counter">
+      <span id="cnt">These 1 von 11</span>
+      <span class="topic" id="topiclabel"></span>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <div class="src"><span class="dot"></span><span id="srctext"></span></div>
+    <p class="these" id="these">…</p>
+    <p class="hint" id="hint"></p>
+
+    <div class="cards">
+      <button class="big ja" id="bJa" aria-pressed="false">Stimme zu</button>
+      <button class="big nein" id="bNein" aria-pressed="false">Stimme nicht zu</button>
+    </div>
+    <div class="minor">
+      <button class="minorbtn" id="bNeutral" aria-pressed="false">Neutral</button>
+      <button class="minorbtn" id="bSkip" aria-pressed="false">These überspringen</button>
+    </div>
+
+    <div class="rowtools">
+      <label class="weight" id="wLabel">
+        <input type="checkbox" id="wBox">
+        <span>Besonders wichtig – zählt doppelt</span>
+      </label>
+      <button class="linkbtn" id="bBack">← Zurück</button>
+    </div>
+  </div>
+  <p class="keys">Tastatur: <b>1</b> zustimmen · <b>2</b> neutral · <b>3</b> ablehnen · <b>←</b> zurück</p>
+</section>
+
+<section id="result" hidden aria-label="Ergebnis">
+  <h2>Ihre Übereinstimmung</h2>
+  <div class="res" id="res"></div>
+  <div class="readout" id="readout"></div>
+
+  <h2>Festlegungsgrad an diesem Abend</h2>
+  <p class="lede2">Elf Thesen, elf Felder je Bewerber. Das Muster zeigt, wie oft sich jemand
+  klar positioniert hat – und wie oft er offen ließ, wohin er will. Es ist keine Wertung:
+  Ob eine bewusste Nicht-Festlegung Verantwortungsbewusstsein oder Ausweichen ist, entscheiden Sie.</p>
+  <div class="fest" id="fest"></div>
+  <div class="legend">
+    <span><i style="background:var(--accent)"></i> klare Position</span>
+    <span><i style="background:var(--accent-soft);border:1px solid var(--accent-mute)"></i> bewusst offen gelassen</span>
+    <span><i style="background:repeating-linear-gradient(45deg,var(--line) 0 3px,transparent 3px 6px);border:1px solid var(--line)"></i> nicht geäußert</span>
+  </div>
+
+  <h2 id="hDiff">Das gab den Ausschlag</h2>
+  <div class="cmp" id="diffList"></div>
+
+  <h2>Hier waren sich alle einig</h2>
+  <p class="lede2">Bei diesen Thesen hilft Ihnen die Wahl nicht weiter.</p>
+  <div class="cmp" id="sameList"></div>
+
+  <button class="restart" id="bRestart">Von vorn beginnen</button>
+</section>
+
+<details>
+  <summary>Alle 11 Thesen und die Positionen der fünf Bewerber ansehen</summary>
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th>These</th><th>Kuhlmann</th><th>Lenger</th><th>Schmidt</th><th>Sinning</th><th>Ulrichs</th>
+      </tr></thead>
+      <tbody id="posBody"></tbody>
+    </table>
+  </div>
+  <p class="hint" style="margin-top:12px">„Offen“ heißt: hat sich an diesem Abend bewusst nicht
+  festgelegt. „–“ heißt: hat sich dazu nicht geäußert; die These zählt für ihn dann nicht mit.</p>
+</details>
+</main>
+
+<footer>
+  <p><b>Datengrundlage.</b> Videoaufzeichnung der Podiumsdiskussion von General-Anzeiger und
+  Ostfriesen-Zeitung am 3.&nbsp;September 2026 in Flachsmeer, veröffentlicht von ostfriesen.tv
+  (rund 105 Minuten). Die Thesen sind aus den Wortbeiträgen des Abends abgeleitet; hinter jeder
+  These steht das Themenfeld, aus dem sie stammt.</p>
+  <p><b>Wie die Positionen zugeordnet wurden.</b> Anders als in Leer gab es hier keine Runde, in
+  der alle dieselbe Frage mit Karte beantworten mussten. Jede Zuordnung ist deshalb eine
+  Auslegung von gesprochenen Aussagen – sorgfältig, aber diskutabel. Wer den genauen Wortlaut
+  nachlesen will, findet die ausführliche Auswertung in der zugehörigen Entscheidungshilfe als PDF.
+  Die einzige Ausnahme ist These&nbsp;3: Dort wurden Karten hochgehalten, und dort ist auch
+  vermerkt, wo das Bild nicht eindeutig war.</p>
+  <p><b>Wertung.</b> Wie beim Wahl-O-Mat: gleiche Haltung 2 Punkte, eine Seite offen oder neutral
+  1 Punkt, gegenteilige Haltung 0 Punkte; als wichtig markierte Thesen zählen doppelt. Der
+  Prozentwert ist der Anteil der erreichten an den erreichbaren Punkten – je Bewerber nur über
+  die Thesen, zu denen er sich überhaupt geäußert hat.</p>
+  <p>Elf Thesen sind kein Wahlprogramm. Ein Podiumsabend zeigt Schwerpunkte und
+  Reaktionsvermögen, nicht das ganze Angebot eines Bewerbers.</p>
+</footer>
+
+</div>
+
+<script>
+const T = [
+ {n:1, topic:'Straßenausbaubeiträge', src:'Wortbeiträge · Straßenausbaubeiträge',
+  t:'Westoverledingen soll die Straßenausbaubeiträge abschaffen – so wie es die Nachbargemeinde Rhauderfehn getan hat.',
+  note:'Sinning gab als Einziger eine unbedingte Zusage. Kuhlmann verweigerte die Festlegung bewusst und lieferte stattdessen eine Rechnung; Lenger nannte sich persönlich dagegen, blieb bei der Zusage aber vage.',
+  p:{kuhlmann:0, lenger:0, schmidt:-1, sinning:1, ulrichs:-1}},
+ {n:2, topic:'Straßenausbaubeiträge', src:'Wortbeiträge · Gegenfinanzierung',
+  t:'Wer die Straßenausbaubeiträge abschaffen will, muss offen sagen, dass dafür die Grundsteuer steigen muss.',
+  note:'Lenger und Kuhlmann benannten diesen Zusammenhang übereinstimmend. Sinning will die Abschaffung stattdessen aus neuen Gewerbeansiedlungen gegenfinanzieren.',
+  p:{kuhlmann:1, lenger:1, schmidt:null, sinning:-1, ulrichs:null}},
+ {n:3, topic:'Grundsteuer', src:'Kartenabfrage · ca. 1:19:14',
+  t:'Eine Erhöhung der Grundsteuer in den nächsten vier Jahren ist vertretbar.',
+  note:'Die einzige Kartenabfrage des Abends – grüner Daumen für Ja, roter für Nein, Kreuz für unentschieden. Einen grünen Daumen zeigte niemand. Kuhlmann hielt erst Rot und nahm Sekunden später das Kreuz dazu; sein Signal ist deshalb nicht eindeutig und zählt hier nicht mit.',
+  p:{kuhlmann:null, lenger:0, schmidt:-1, sinning:0, ulrichs:-1}},
+ {n:4, topic:'Reithalle Ihrhove', src:'Wortbeiträge · Reithalle Ihrhove',
+  t:'Die Reithalle in Ihrhove soll an ihrem Standort erhalten bleiben.',
+  note:'Abreißen wollte sie niemand. Sinning gab die härteste Zusage, Schmidt sah gar keinen Konflikt, Ulrichs will den Erhalt mit einer kleineren Lösung verbinden. Kuhlmann und Lenger hielten sich beim Ergebnis offen und sprachen von einem Kompromiss.',
+  p:{kuhlmann:0, lenger:0, schmidt:1, sinning:1, ulrichs:1}},
+ {n:5, topic:'Wohnen und Bauen', src:'Wortbeiträge · Bauflächen und Wohnraum',
+  t:'Neuer Wohnraum soll vorrangig durch Nachverdichtung im Ortsinneren entstehen, nicht durch neue Baugebiete am Rand.',
+  note:'Lenger nannte als Einziger eine Quote – rund 70 Prozent Innenentwicklung. Kuhlmann argumentiert gegenteilig: Ohne neue Baugebiete laufen Kitas und Schulen leer. Schmidt und Ulrichs wollen beides ohne Quote.',
+  p:{kuhlmann:-1, lenger:1, schmidt:0, sinning:1, ulrichs:0}},
+ {n:6, topic:'Schulwegsicherheit', src:'Wortbeiträge · Schulwegsicherheit',
+  t:'Der Ratsbeschluss zu Tempo 30 vor Schulen und Kitas reicht nicht aus – es braucht zusätzliche Maßnahmen.',
+  note:'Hier waren sich alle fünf einig: ein Anfang, mehr nicht. Unterschiedlich waren nur die Mittel – von aufgemalten Tempo-Markierungen über Zebrastreifen bis zu Laufgruppen statt Elterntaxis.',
+  p:{kuhlmann:1, lenger:1, schmidt:1, sinning:1, ulrichs:1}},
+ {n:7, topic:'Wirtschaft', src:'Wortbeiträge · Wirtschaftsstandort',
+  t:'Westoverledingen soll gezielt eine große Neuansiedlung anstreben – etwa ein Rechenzentrum.',
+  note:'Sinnings ambitioniertester Vorschlag des Abends: rund 450 Arbeitsplätze, verdoppelte Gewerbeeinnahmen. Kuhlmann hält dagegen, dass sich Großindustrie hier mangels Flächen nicht ansiedeln wird. Lenger und Ulrichs werten den breiten Branchenmix als Stärke.',
+  p:{kuhlmann:-1, lenger:0, schmidt:null, sinning:1, ulrichs:0}},
+ {n:8, topic:'Parteibindung', src:'Wortbeiträge · Parteifrage',
+  t:'Eine Parteibindung ist für einen Bürgermeister eher ein Vorteil als ein Hindernis.',
+  note:'Die deutlichste Vier-gegen-einen-Konstellation des Abends. Lenger verteidigt seine Parteibindung offensiv als Netzwerkvorteil bis Hannover und Berlin; die anderen vier setzen bewusst auf Parteiferne – Sinning würde bei einer Wahl sogar aus der FDP austreten, Ulrichs ist nach 40 Jahren aus der CDU ausgetreten.',
+  p:{kuhlmann:-1, lenger:1, schmidt:-1, sinning:-1, ulrichs:-1}},
+ {n:9, topic:'Umgang mit der AfD', src:'Wortbeiträge · Umgang mit der AfD im Rat',
+  t:'Gegenüber der AfD im Gemeinderat braucht es eine klar gezogene inhaltliche Grenze – formale Gleichbehandlung allein genügt nicht.',
+  note:'Lenger zieht die Grenze bei menschen- und demokratieverachtenden Äußerungen und verweist auf die Einstufung der niedersächsischen AfD als rechtsextremistisch; Sinning hält sie für verfassungsgefährdend. Kuhlmann verweist auf die Rechtslage der Gleichbehandlung, Schmidt auf die Sache: Wer mithilft, ist willkommen. Ulrichs setzt auf den bisherigen sachlichen Umgang.',
+  p:{kuhlmann:-1, lenger:1, schmidt:-1, sinning:1, ulrichs:0}},
+ {n:10, topic:'Rolle im Rathaus', src:'Wortbeiträge · Kernfrage des Abends',
+  t:'An der Spitze des Rathauses braucht es einen Verwaltungsfachmann – keinen Moderator, der vor allem Menschen zusammenbringt.',
+  note:'Die von der Moderation ausdrücklich so benannte Kernfrage. Kuhlmann: 22.000 Einwohner sind kein kleiner Betrieb, das braucht Verwaltungshandwerk. Ulrichs hält exakt dagegen. Sinning beansprucht einen dritten Weg – Führungserfahrung aus komplexen Organisationen.',
+  p:{kuhlmann:1, lenger:-1, schmidt:-1, sinning:0, ulrichs:-1}},
+ {n:11, topic:'Verwaltung', src:'Wortbeiträge · Verwaltung und Unternehmen',
+  t:'Für Unternehmen muss die Gemeindeverwaltung spürbar schneller und digitaler werden.',
+  note:'Ulrichs schilderte es als Betroffener: Für einen jährlichen Antrag muss er persönlich ins Rathaus, warten und den Bescheid per Post abwarten. Kuhlmann und Lenger äußerten sich dazu nicht ausdrücklich.',
+  p:{kuhlmann:null, lenger:null, schmidt:1, sinning:1, ulrichs:1}}
+];
+
+const C = [
+ {k:'kuhlmann', name:'Gerwin Kuhlmann', short:'Kuhlmann', party:'parteilos'},
+ {k:'lenger',   name:'Tammo Lenger',    short:'Lenger',   party:'Grüne, gemeinsam mit der SPD'},
+ {k:'schmidt',  name:'Janno Schmidt',   short:'Schmidt',  party:'parteilos'},
+ {k:'sinning',  name:'Thorsten Sinning',short:'Sinning',  party:'parteiunabhängig, FDP-Mitglied'},
+ {k:'ulrichs',  name:'Michael Ulrichs', short:'Ulrichs',  party:'parteilos, ehem. CDU'}
+];
+
+const KEY = 'festlegungscheck-wol-v1';
+let idx = 0, ans = {}, wgt = {};
+
+try{
+  const s = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if(s && s.ans){ ans = s.ans; wgt = s.wgt || {}; idx = Math.min(s.idx || 0, T.length - 1); }
+}catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify({ans, wgt, idx})); }catch(e){} }
+
+const $ = id => document.getElementById(id);
+const rail = $('rail');
+T.forEach(() => { const d = document.createElement('div'); d.className = 'tick'; rail.appendChild(d); });
+
+const labelFor = v => v === 1 ? 'Stimme zu' : v === -1 ? 'Stimme nicht zu' : v === 0 ? 'Neutral' : 'Übersprungen';
+const posLabel = v => v === 1 ? 'Ja' : v === -1 ? 'Nein' : v === 0 ? 'offen gelassen' : 'nicht geäußert';
+
+function renderQuiz(){
+  const t = T[idx];
+  $('these').textContent = t.t;
+  $('srctext').textContent = t.src;
+  $('hint').textContent = t.note || '';
+  $('cnt').textContent = 'These ' + (idx + 1) + ' von ' + T.length;
+  $('topiclabel').textContent = t.topic;
+  const a = ans[t.n];
+  $('bJa').setAttribute('aria-pressed', a === 1);
+  $('bNein').setAttribute('aria-pressed', a === -1);
+  $('bNeutral').setAttribute('aria-pressed', a === 0);
+  $('bSkip').setAttribute('aria-pressed', a === 'skip');
+  $('wBox').checked = !!wgt[t.n];
+  $('wLabel').className = 'weight' + (wgt[t.n] ? ' on' : '');
+  $('bBack').disabled = idx === 0;
+  [...rail.children].forEach((el, i) => {
+    const v = ans[T[i].n];
+    el.className = 'tick' + (i === idx ? ' now' : (v === 'skip' ? ' skip' : (v !== undefined ? ' done' : '')));
+  });
+}
+
+function answer(v){
+  ans[T[idx].n] = v; save();
+  if(idx < T.length - 1){ idx++; renderQuiz(); save(); } else { showResult(); }
+}
+$('bJa').onclick = () => answer(1);
+$('bNein').onclick = () => answer(-1);
+$('bNeutral').onclick = () => answer(0);
+$('bSkip').onclick = () => answer('skip');
+$('bBack').onclick = () => { if(idx > 0){ idx--; renderQuiz(); save(); } };
+$('wBox').onchange = e => { wgt[T[idx].n] = e.target.checked; $('wLabel').className = 'weight' + (e.target.checked ? ' on' : ''); save(); };
+
+document.addEventListener('keydown', e => {
+  if($('quiz').hidden || e.target.tagName === 'INPUT') return;
+  if(e.key === '1') answer(1);
+  else if(e.key === '2') answer(0);
+  else if(e.key === '3') answer(-1);
+  else if(e.key === 'ArrowLeft' && idx > 0){ idx--; renderQuiz(); save(); }
+});
+
+function score(ck){
+  let got = 0, max = 0, counted = 0;
+  T.forEach(t => {
+    const a = ans[t.n], p = t.p[ck];
+    if(a === undefined || a === 'skip' || p === null) return;
+    const w = wgt[t.n] ? 2 : 1;
+    max += 2 * w; counted++;
+    if(a === 0 || p === 0) got += w;
+    else if(a === p) got += 2 * w;
+  });
+  return {pct: max ? Math.round(got / max * 100) : null, counted};
+}
+
+const chip = (cls, who, val) => '<span class="chip ' + cls + '"><b>' + who + '</b> ' + val + '</span>';
+
+function showResult(){
+  $('quiz').hidden = true;
+  $('result').hidden = false;
+  renderResult();
+  $('result').scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function renderResult(){
+  const rows = C.map(c => Object.assign({}, c, score(c.k)))
+                .sort((a, b) => (b.pct === null ? -1 : b.pct) - (a.pct === null ? -1 : a.pct));
+  const best = rows[0].pct;
+  $('res').innerHTML = rows.map(r => `
+    <div class="cand${r.pct !== null && r.pct === best ? ' lead' : ''}">
+      <div><span class="nm">${r.name}</span> <span class="pty">${r.party}</span></div>
+      <div class="pct">${r.pct === null ? '–' : r.pct + '%'}</div>
+      <div class="bar"><i style="width:${r.pct === null ? 0 : r.pct}%"></i></div>
+      <div class="meta">${r.counted} von ${T.length} Thesen gewertet</div>
+    </div>`).join('');
+
+  const answered = T.filter(t => ans[t.n] !== undefined && ans[t.n] !== 'skip').length;
+  const top = rows[0], second = rows[1];
+  let txt;
+  if(answered === 0){
+    txt = 'Sie haben keine These beantwortet – es gibt nichts zu vergleichen.';
+  } else if(top.pct !== null && second.pct !== null && top.pct === second.pct){
+    txt = `<b>Gleichstand.</b> ${top.name} und ${second.name} liegen bei Ihnen exakt gleichauf. Sehen Sie sich die Thesen darunter an – dort steht, an welchen Punkten Sie mit wem übereinstimmen.`;
+  } else if(top.pct !== null && second.pct !== null && top.pct - second.pct <= 5){
+    txt = `<b>Knapp.</b> ${top.name} liegt nur ${top.pct - second.pct} Prozentpunkte vor ${second.name}. Bei fünf Bewerbern, die inhaltlich oft nah beieinanderliegen, ist das kein belastbarer Abstand – die Liste darunter sagt mehr als die Zahl.`;
+  } else {
+    txt = `<b>${top.name}</b> liegt bei Ihnen vorn. Verlassen Sie sich nicht allein auf die Prozentzahl: Wo ein Bewerber sich bewusst nicht festgelegt hat, gibt es einen Punkt Richtung Mitte – das kann einen Wert heben, ohne dass er inhaltlich zu Ihnen passt.`;
+  }
+  $('readout').innerHTML = txt;
+
+  $('fest').innerHTML = C.map(c => {
+    const cells = T.map(t => {
+      const p = t.p[c.k];
+      const cls = p === null ? 'none' : (p === 0 ? 'mid' : 'clear');
+      const lbl = c.short + ', These ' + t.n + ': ' + posLabel(p);
+      return `<div class="cell ${cls}" title="${lbl}"></div>`;
+    }).join('');
+    const clear = T.filter(t => t.p[c.k] === 1 || t.p[c.k] === -1).length;
+    return `<div class="frow">
+      <div class="fn">${c.name}</div>
+      <div class="fv">${clear}/${T.length} klar</div>
+      <div class="cells">${cells}</div></div>`;
+  }).join('');
+
+  const isSame = t => { const v = C.map(c => t.p[c.k]).filter(x => x !== null); return v.every(x => x === v[0]); };
+  const diff = T.filter(t => !isSame(t));
+  const same = T.filter(t => isSame(t));
+
+  const chipsFor = t => {
+    const a = ans[t.n];
+    const you = (a === undefined) ? '<span class="chip">nicht beantwortet</span>'
+              : (a === 'skip') ? '<span class="chip">übersprungen</span>'
+              : chip('you', 'Sie', labelFor(a));
+    const cs = C.map(c => {
+      const p = t.p[c.k];
+      let cls = '';
+      if(p === 1 || p === -1){ if(a === 1 || a === -1) cls = (a === p) ? 'match' : 'miss'; }
+      return chip(cls, c.short, posLabel(p));
+    }).join('');
+    return you + cs;
+  };
+
+  $('diffList').innerHTML = diff.map(t =>
+    `<div class="cmpitem"><p class="t"><span class="no">${t.n}</span>${t.t}</p>
+     <div class="chips">${chipsFor(t)}</div></div>`).join('');
+  $('hDiff').textContent = 'Das gab den Ausschlag — ' + diff.length + ' von ' + T.length + ' Thesen';
+
+  $('sameList').innerHTML = same.map(t =>
+    `<div class="cmpitem"><p class="t"><span class="no">${t.n}</span>${t.t}</p>
+     <div class="chips">${chipsFor(t)}</div></div>`).join('');
+}
+
+$('bRestart').onclick = () => {
+  ans = {}; wgt = {}; idx = 0; save();
+  $('result').hidden = true; $('quiz').hidden = false;
+  renderQuiz();
+  window.scrollTo({top:0, behavior:'smooth'});
+};
+
+$('posBody').innerHTML = T.map(t => {
+  const cell = v => `<td class="p ${v === 1 ? 'ja' : v === -1 ? 'nein' : v === 0 ? 'mid' : 'na'}">${v === 1 ? 'Ja' : v === -1 ? 'Nein' : v === 0 ? 'offen' : '–'}</td>`;
+  return `<tr><td class="tx">${t.n}. ${t.t}</td>${C.map(c => cell(t.p[c.k])).join('')}</tr>`;
+}).join('');
+
+renderQuiz();
+if(Object.keys(ans).length === T.length) showResult();
+</script>

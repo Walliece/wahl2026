@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<title>Bürgermeisterwahl Westoverledingen 2026 – Entscheidungshilfe</title>
+<style>
+@page { size: A4; margin: 17mm 16mm 15mm 16mm; }
+:root{
+  --ink:#1a1d21; --mute:#5c646d; --line:#d3d8dd; --soft:#f4f6f8;
+  --k1:#2f5d7c; --k2:#3f7d54; --k3:#8a6a2f; --k4:#6b4a7a; --k5:#a1502f;
+  --accent:#1f4c6b;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; color:var(--ink);
+  font-family:"Iowan Old Style","Palatino Linotype",Georgia,serif;
+  font-size:10.2pt; line-height:1.5;
+}
+h1,h2,h3,h4,.sans{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;}
+h1{font-size:23pt; line-height:1.15; margin:0 0 6px; letter-spacing:-.4px;}
+h2{page-break-after:avoid; break-after:avoid; font-size:13.5pt; margin:0 0 10px; color:var(--accent); letter-spacing:-.2px;
+   border-bottom:2px solid var(--accent); padding-bottom:5px;}
+h3{font-size:11pt; margin:16px 0 5px;}
+p{margin:0 0 8px;}
+ul{margin:0 0 8px; padding-left:17px;} li{margin-bottom:3px;}
+.small{font-size:8.6pt; line-height:1.4;}
+.mute{color:var(--mute);}
+section{page-break-inside:auto;}
+.page-break{page-break-before:always;}
+.avoid{page-break-inside:avoid;}
+
+/* Titel */
+.cover{border-top:5px solid var(--accent); padding-top:14px; margin-bottom:22px;}
+.kicker{font-size:8.6pt; letter-spacing:1.6px; text-transform:uppercase;
+        color:var(--accent); font-weight:700; margin-bottom:9px;}
+.lede{font-size:11.4pt; color:#333; margin-top:10px; max-width:96%;}
+.metabar{display:flex; gap:0; border:1px solid var(--line); margin-top:16px;}
+.metabar div{flex:1; padding:8px 9px; border-right:1px solid var(--line);}
+.metabar div:last-child{border-right:none;}
+.metabar .lbl{font-size:7.4pt; letter-spacing:1.1px; text-transform:uppercase; color:var(--mute); font-weight:700;}
+.metabar .val{font-size:9.2pt; font-weight:600; margin-top:2px; white-space:nowrap;}
+
+/* Hinweisbox */
+.note{background:var(--soft); border-left:3px solid var(--accent);
+      padding:9px 12px; margin:14px 0; page-break-inside:avoid; break-inside:avoid;}
+
+/* Steckbriefe */
+.card{border:1px solid var(--line); border-top:4px solid var(--c);
+      padding:10px 12px 11px; margin-bottom:9px; page-break-inside:avoid;}
+.cardhead{display:flex; gap:11px; align-items:flex-start; margin-bottom:7px;}
+.cardhead .hx{flex:1;}
+.mono{
+  width:23mm; height:23mm; flex:none; box-sizing:border-box;
+  background:var(--t); border:1px solid var(--tb); border-radius:2px; color:var(--c);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700; font-size:16pt; letter-spacing:.6px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  -webkit-print-color-adjust:exact; print-color-adjust:exact;
+}
+.card .name{font-size:12.4pt; font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+            line-height:1.2;}
+.card .tag{font-size:8.6pt; color:var(--c); font-weight:700; letter-spacing:.4px;
+           font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; margin:2px 0 6px;}
+.card .facts{font-size:8.9pt; color:var(--mute); margin-bottom:6px;}
+.card p{margin-bottom:5px; font-size:9.7pt;}
+.card .claim{font-size:9.3pt; background:var(--soft); padding:6px 9px; margin-top:7px;}
+.card .claim b{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8.2pt;
+               letter-spacing:.6px; text-transform:uppercase; color:var(--mute);
+               display:block; margin-bottom:2px;}
+
+/* Tabellen */
+table{width:100%; border-collapse:collapse; margin:6px 0 14px; font-size:9.1pt;}
+th,td{text-align:left; vertical-align:top; padding:6px 8px; border-bottom:1px solid var(--line);}
+th{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8pt;
+   letter-spacing:.8px; text-transform:uppercase; color:var(--mute);
+   border-bottom:1.5px solid var(--ink); font-weight:700;}
+td.who{width:23%; font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+       font-size:9pt; border-left:3px solid transparent; padding-left:8px;}
+tr{page-break-inside:avoid;}
+.w-kuhlmann{border-left-color:var(--k1)!important;}
+.w-lenger{border-left-color:var(--k2)!important;}
+.w-schmidt{border-left-color:var(--k3)!important;}
+.w-sinning{border-left-color:var(--k4)!important;}
+.w-ulrichs{border-left-color:var(--k5)!important;}
+.pos{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8pt; font-weight:700;
+     letter-spacing:.4px; display:inline-block; padding:1px 6px; border:1px solid var(--line);
+     background:#fff; margin-bottom:3px; white-space:nowrap;}
+
+/* Konfliktlinie */
+.axis{border:1px solid var(--line); padding:10px 12px; margin-bottom:10px; page-break-inside:avoid;}
+.axis .t{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:9.8pt;
+         margin-bottom:4px;}
+.poles{display:flex; gap:10px; margin-top:7px; font-size:8.8pt;}
+.poles div{flex:1; background:var(--soft); padding:6px 8px;}
+.poles .ph{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:7.6pt;
+           text-transform:uppercase; letter-spacing:.8px; color:var(--mute); font-weight:700;
+           display:block; margin-bottom:2px;}
+
+/* Leitfragen */
+.q{border-left:3px solid var(--accent); padding:8px 12px; margin-bottom:9px;
+   background:#fbfcfd; page-break-inside:avoid;}
+.mini{width:auto; margin:7px 0 8px; font-size:8.6pt; border-collapse:collapse;}
+.mini td{padding:3px 10px 3px 8px; border-bottom:1px solid var(--line); background:#fff;}
+.mini td.n{font-weight:700; font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+           border-left:3px solid transparent;}
+.mini td.v{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-size:8.2pt;}
+.q .qt{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif; font-weight:700; font-size:9.8pt;
+       margin-bottom:3px;}
+.q p{margin:0; font-size:9.5pt;}
+
+footer{margin-top:20px; padding-top:9px; border-top:1px solid var(--line);}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="kicker">Entscheidungshilfe zur Kommunalwahl am 13. September 2026</div>
+  <h1>Wer soll Bürgermeister von<br>Westoverledingen werden?</h1>
+  <p class="lede">Fünf Bewerber, ein Amt, acht Jahre Amtszeit. Diese Übersicht fasst zusammen,
+  was die Kandidaten bei der Podiumsdiskussion von General-Anzeiger und Ostfriesen-Zeitung
+  am 3. September 2026 in Flachsmeer tatsächlich gesagt haben – sortiert nach Themen,
+  damit Sie die Unterschiede nebeneinander sehen können.</p>
+  <div class="metabar">
+    <div><div class="lbl">Wahltag</div><div class="val">So., 13.09.2026</div></div>
+    <div><div class="lbl">Stichwahl</div><div class="val">So., 27.09.2026</div></div>
+    <div><div class="lbl">Bewerber</div><div class="val">5</div></div>
+    <div><div class="lbl">Amtszeit</div><div class="val">8 Jahre</div></div>
+    <div><div class="lbl">Amtsinhaber</div><div class="val">tritt nicht an</div></div>
+  </div>
+</div>
+
+<div class="note small">
+  <b>Wie diese Übersicht entstanden ist.</b> Grundlage ist ausschließlich die vollständige
+  Videoaufzeichnung der Podiumsdiskussion (rund 105 Minuten, veröffentlicht von ostfriesen.tv).
+  Ausgewertet wurde ein automatisch erzeugtes Transkript. Alle Aussagen sind daher
+  <b>sinngemäß zusammengefasst, nicht wörtlich zitiert</b>. Einzelne Orts-, Personen- und
+  Zahlenangaben können in der automatischen Spracherkennung unpräzise sein; wo etwas
+  unklar blieb, ist das gekennzeichnet. Wahlprogramme, Flyer und sonstige Wahlkampfauftritte
+  wurden nicht ausgewertet – ein Podiumsabend zeigt Schwerpunkte, nicht das ganze Programm.
+  Diese Zusammenstellung ist bewusst neutral gehalten und enthält <b>keine Wahlempfehlung</b>.
+</div>
+
+<section>
+<h2>Die fünf Bewerber auf einen Blick</h2>
+<p class="small mute" style="margin-top:-4px;">Alphabetisch nach Nachnamen. Die Farbe je Kandidat
+wiederholt sich in allen Tabellen dieses Dokuments. Das Monogramm neben dem Namen zeigt die
+Initialen in dieser Farbe – Porträtfotos gibt es nicht, weil die Veranstaltung durchgehend in
+einer weiten Totale aufgezeichnet wurde.</p>
+
+<div class="card" style="--c:var(--k1); --t:#E6ECEF; --tb:#B6C6D1">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">GK</div>
+  <div class="hx"><div class="name">Gerwin Kuhlmann</div>
+  <div class="tag">parteilos · der Verwaltungsprofi</div>
+  <div class="facts">53 Jahre · lebt in Flachsmeer · Vater von drei Kindern</div></div>
+</div>
+  <p><b>Beruflicher Hintergrund:</b> durchgehend Kommunalverwaltung – Studium aus einer
+  Kirchenverwaltung heraus, Kämmerer bei der Stadt Weener, ab 2014 Fachbereichsleiter
+  Bürgerdienste, Ordnung und Soziales in Westoverledingen, anschließend Erster Samtgemeinderat
+  in Nordhümmling. Verließ Westoverledingen nach eigener Aussage, weil ihm dort der Weg zum
+  Ersten Gemeinderat versperrt war.</p>
+  <p><b>Auftritt am Abend:</b> mit Abstand der detailreichste Redner – nennt konkrete Zahlen
+  (Einwohnerentwicklung, Grundsteuerhebesätze, Gewerbesteueranteile) und argumentiert stark
+  aus Verwaltungspraxis. Wurde von der Moderation mehrfach zur Kürze gemahnt.</p>
+  <div class="claim"><b>Sein Kernargument</b>Er kann am Tag eins arbeiten statt sich einarbeiten –
+  Fachlichkeit und Ortskenntnis in einer Person, während der neue Erste Gemeinderat die
+  Gemeinde erst kennenlernen muss.</div>
+</div>
+
+<div class="card" style="--c:var(--k2); --t:#E8EFEB; --tb:#BCD2C3">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">TL</div>
+  <div class="hx"><div class="name">Tammo Lenger</div>
+  <div class="tag">Bündnis 90/Die Grünen · der Netzwerker</div>
+  <div class="facts">51 Jahre · geboren in Leer, aufgewachsen in Papenburg und Flachsmeer</div></div>
+</div>
+  <p><b>Beruflicher Hintergrund:</b> Studium Politikwissenschaft, öffentliches Recht und
+  Nordistik; früher Fachbereichsleiter an der VHS, heute Projektmanager an der Hochschule
+  Emden/Leer für ein Forschungsprojekt zum klimaneutralen Fischkutter.</p>
+  <p><b>Politische Erfahrung:</b> der mit Abstand erfahrenste Kommunalpolitiker im Feld –
+  seit 2006 aktiv, zehn Jahre Gemeinderat, weiterhin Kreistag, dort Fraktionsvorsitzender
+  der Grünen und Gruppensprecher der Gruppe mit der SPD. Gemeinsamer Kandidat von Grünen und SPD.
+  Er hat bereits mehrfach kandidiert (u.&nbsp;a. 2006 fürs Bürgermeisteramt, später Landrat,
+  Bundes- und Landtag) – darauf wurde er auf dem Podium direkt angesprochen.</p>
+  <div class="claim"><b>Sein Kernargument</b>Die Gemeinde braucht einen „Schnittstellenmanager“:
+  jemanden, der zwischen Ortschaften, Rathaus, Kreis, Land und Bund vermittelt – und
+  Parteibindung ist dabei ein Netzwerkvorteil, kein Makel.</div>
+</div>
+
+<div class="card" style="--c:var(--k3); --t:#F1EDE6; --tb:#D6CBB6">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">JS</div>
+  <div class="hx"><div class="name">Janno Schmidt</div>
+  <div class="tag">parteilos · der Praktiker vom Dorf</div>
+  <div class="facts">aus Großwolde · zwei kleine Kinder (6 und knapp 4)</div></div>
+</div>
+  <p><b>Beruflicher Hintergrund:</b> Studium Wirtschaftsingenieurwesen in Duisburg,
+  danach zurück in den elterlichen Betrieb, den er vor 13 Jahren krankheitsbedingt
+  vollständig übernahm. Bringt Erfahrung mit Budgets und Personalführung aus der Wirtschaft mit.</p>
+  <p><b>Verwurzelung:</b> stark im Ehrenamt – Feuerwehr Großwolde, zweiter Vorsitzender
+  des Wasser- und Bodenverbands, zweiter Vorsitzender der Jagdgenossenschaft. Enger
+  Draht zur Landwirtschaft, den er als Schlüssel für Flächenfragen sieht.</p>
+  <p><b>Auftritt am Abend:</b> der bodenständigste und konkreteste bei Alltagsproblemen
+  (Schulweg, Radwegquerungen), räumt beim Verwaltungsrecht offen Wissenslücken ein und
+  verweist auf die Fachleute im Rathaus.</p>
+  <div class="claim"><b>Sein Kernargument</b>Frische Luft im Rathaus. Er will Bindeglied
+  zwischen Verwaltung, Rat, Bürgern und besonders den Landwirten sein – und keine Probleme
+  suchen, wo keine sind.</div>
+</div>
+
+<div class="card" style="--c:var(--k4); --t:#EDE9EF; --tb:#CBC0D1">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">TS</div>
+  <div class="hx"><div class="name">Thorsten Sinning</div>
+  <div class="tag">parteiunabhängig (FDP-Mitglied) · der Digitalisierer</div>
+  <div class="facts">54 Jahre · zwei erwachsene, studierende Kinder</div></div>
+</div>
+  <p><b>Beruflicher Hintergrund:</b> Projektmanager bei der Deutschen Telekom, dort zuständig
+  für die europäische Bürger-Wallet; zugelassener belgischer Patentanwalt, dadurch nach eigener
+  Aussage praxiserfahren im Verwaltungsrecht. Zuvor Mandatsträger in einer Ortsvertretung.</p>
+  <p><b>Zur Parteifrage:</b> bezeichnet sich nicht als parteilos, sondern als
+  „parteiunabhängig“ – er ist FDP-Mitglied, würde bei einer Wahl aber austreten. Die FDP
+  tritt in Westoverledingen nicht an, er wird von keiner Partei unterstützt.</p>
+  <p><b>Auftritt am Abend:</b> der Kandidat mit den weitesten Zukunftsideen (KI-Rechenzentrum,
+  Verwaltungsdigitalisierung) und zugleich der klarsten Einzelposition bei den
+  Straßenausbaubeiträgen.</p>
+  <div class="claim"><b>Sein Kernargument</b>Kontakte und Kompetenz von außen: Er bringt
+  Digital- und Verwaltungserfahrung aus einem Großkonzern mit und will die Gemeinde
+  über die nächsten acht Jahre technisch und wirtschaftlich neu aufstellen.</div>
+</div>
+
+<div class="card" style="--c:var(--k5); --t:#F4EAE6; --tb:#DEC2B6">
+  <div class="cardhead">
+  <div class="mono" aria-hidden="true">MU</div>
+  <div class="hx"><div class="name">Michael Ulrichs</div>
+  <div class="tag">parteilos (ehem. CDU) · der Ausgleicher</div>
+  <div class="facts">55 Jahre · lebt in Flachsmeer · verheiratet, zwei Kinder (21 und 17)</div></div>
+</div>
+  <p><b>Beruflicher Hintergrund:</b> Unternehmer – betreibt seit 2006 gemeinsam mit seiner Frau
+  sechs Lebensmittelmärkte rund um Westoverledingen. Beschreibt Mitarbeiterführung und
+  Delegieren als das, was er am liebsten macht.</p>
+  <p><b>Zur Parteifrage:</b> rund 40 Jahre CDU-Mitglied, ordnet sich selbst dem linken Flügel
+  der Union zu und nennt auch die SPD der 1970er als Bezugspunkt. Der Austritt war nach
+  eigener Aussage der auslösende Schritt für die Kandidatur – er wollte für alle
+  Ratsfraktionen ansprechbar sein. Ein Wiedereintritt ist für ihn ausgeschlossen.</p>
+  <div class="claim"><b>Sein Kernargument</b>Die Verwaltung ist fachlich bereits gut aufgestellt.
+  An der Spitze braucht es keinen weiteren Verwaltungsfachmann, sondern jemanden, der Menschen
+  zusammenbringt, motiviert und Kompromisse organisiert.</div>
+</div>
+</section>
+
+<div class="page-break"></div>
+
+<section>
+<h2>Streitfall Reithalle Ihrhove</h2>
+<p>Das emotionalste Thema des Abends: Auf dem Gelände des Reitvereins könnte ein Baugebiet
+entstehen – der Streit läuft seit Jahren. Die Moderation bat um ein Schlagwort.
+Das Ergebnis ist eindeutiger, als der lange Streit vermuten lässt: <b>Kein Kandidat will
+die Halle einfach abreißen.</b> Die Unterschiede liegen in der Begründung und in der Härte
+der Festlegung.</p>
+<table>
+<tr><th style="width:23%">Kandidat</th><th>Position zur Reithalle</th></tr>
+<tr><td class="who w-kuhlmann">Kuhlmann</td><td>
+  <span class="pos">Kompromiss, aber ergebnisoffen</span><br>
+  Nennt es ein „kleines Kompromissmodell“. Will alle noch nicht umgesetzten Beschlüsse
+  mit dem neuen Rat auf den Prüfstand stellen. Eine funktionierende Halle reißt man nicht ab,
+  solange kein Ersatz steht. Rechnet zudem vor: Abriss- und Neubaukosten würden auf die
+  Grundstückspreise aufgeschlagen – die Bauplätze wären dann womöglich nicht mehr
+  erschwinglich. Weist auch auf die Verteilungsfrage hin: ein Millionenzuschuss für einen
+  Verein bindet Geld, das anderen Vereinen fehlt.</td></tr>
+<tr><td class="who w-lenger">Lenger</td><td>
+  <span class="pos">Kompromiss, aber jetzt entscheiden</span><br>
+  Legt sich inhaltlich am wenigsten fest, dafür beim Verfahren am deutlichsten: Der
+  Schwebezustand muss in der nächsten Wahlperiode beendet werden – der Verein braucht endlich
+  Planungssicherheit. Ergebnis soll ein Kompromiss sein, „mit dem alle können“:
+  Wohnraum entwickeln und zugleich eine Reitmöglichkeit erhalten. Westoverledingen soll
+  eine pferdefreundliche Gemeinde bleiben.</td></tr>
+<tr><td class="who w-schmidt">Schmidt</td><td>
+  <span class="pos">Halle bleibt</span><br>
+  Sieht gar keinen echten Konflikt: Die Halle stört das Baugebiet nicht, weil westlich der
+  Großwolder Straße ohnehin sehr viel Fläche vorhanden sei – mehr Bauplätze, als der Markt
+  kurzfristig aufnehmen könne. Der Verein mit über 200 Mitgliedern und vielen Kindern habe
+  seine Existenzberechtigung. Das eigentliche Problem sei ein anderes: Es wurde geplant,
+  ohne die Flächen zu besitzen.</td></tr>
+<tr><td class="who w-sinning">Sinning</td><td>
+  <span class="pos">Halle bleibt – klarste Ansage</span><br>
+  Der deutlichste Verteidiger: Der Verein sei lange genug hängen gelassen worden. Die Halle
+  muss am Standort bleiben, Bestandskraft bekommen <i>und</i> saniert werden – sie ist im
+  Besitz der Gemeinde, und es regnet durch. Nennt den Verein ein „Juwel“, das über die
+  Gemeindegrenzen hinaus bekannt ist. Ihm fehle die Fantasie, wie man diese Halle opfern könnte.</td></tr>
+<tr><td class="who w-ulrichs">Ulrichs</td><td>
+  <span class="pos">Erhalt + kleinere Lösung</span><br>
+  Diagnostiziert verhärtete Fronten und will alle Beteiligten nach der Wahl neu an einen Tisch
+  holen. Ihrhove braucht Baugebiete, und das Grundstück biete sich an – aber nicht auf Kosten
+  der Halle. Sein Weg: eine kleinere, intelligentere Lösung, gemeinsam mit dem Reitverein
+  entwickelt.</td></tr>
+</table>
+<div class="note small">
+  <b>Was das für Ihre Entscheidung heißt:</b> Wer die Halle unbedingt erhalten sehen will, findet
+  bei Sinning die härteste Zusage und bei Schmidt die entspannteste Begründung. Wer vor allem
+  will, dass endlich <i>irgendetwas</i> entschieden wird, findet bei Lenger die klarste
+  Verfahrenszusage. Wer wissen will, was der Kompromiss kostet, bekommt bei Kuhlmann als
+  Einzigem eine Kostenlogik geliefert.
+</div>
+</section>
+
+<section class="page-break">
+<h2>Bauflächen, Wohnraum und Innenverdichtung</h2>
+<p>Ausgangslage laut Diskussion: In mehreren Ortschaften fehlen Baugrundstücke, mehrere
+Ortsbürgermeister schlagen Alarm. Die Gemeinde hat nach Angabe von Kuhlmann seit rund drei
+Jahren keine eigenen Baugrundstücke mehr zu vermarkten.</p>
+<table>
+<tr><th style="width:23%">Kandidat</th><th>Schwerpunkt und Begründung</th></tr>
+<tr><td class="who w-kuhlmann">Kuhlmann</td><td>
+  <span class="pos">Neue Baugebiete – sein Hauptthema</span><br>
+  Argumentiert am stärksten aus der Wachstumslogik: Westoverledingen wuchs von rund 19.000
+  Einwohnern (2014) auf knapp 22.000, weil Baugebiete und Infrastruktur angeboten wurden.
+  Wenn nichts mehr angeboten wird, stehen die gebauten Kitas leer – erste Krippengruppen
+  wurden bereits geschlossen, es gibt rund 80 Geburten weniger pro Jahr. Zusätzlich: Ökopunkte
+  aus Moor-Renaturierung als günstiger Ausgleich für Baugebiete, Mehrgenerationen-Wohnformen,
+  Innenverdichtung u.&nbsp;a. auf drei Dreiecksflächen in Flachsmeer. Auch Kritik an der
+  Vergangenheit: Weil erst das Grundzentrum Ihrhove entwickelt werden sollte, sei anderswo
+  nichts passiert.</td></tr>
+<tr><td class="who w-lenger">Lenger</td><td>
+  <span class="pos">Klar: rund 70 % Nachverdichtung</span><br>
+  Der Einzige, der ein konkretes Verhältnis nennt. Warnt vor dem „Siedlungsdonut“ – Ortschaften
+  wachsen am Rand, die Zentren verfallen. Ursache des Wohnraummangels sei auch der
+  demografische Wandel: Ältere leben in zu großen Häusern auf zu großen Grundstücken.
+  Sein Ansatz: kleinere Einheiten, Doppelhaushälften, jung und alt zusammen, Baugenossenschaften,
+  Ankauf verkaufswilliger Grundstücke durch die Gemeinde – entwickelt im Dialog mit den
+  Ortschaften. Neue Baugebiete erst, wenn das nicht reicht. Weist darauf hin, dass neue Gebiete
+  langwierig sind, während im Innenbereich Baurecht oft schon besteht.</td></tr>
+<tr><td class="who w-schmidt">Schmidt</td><td>
+  <span class="pos">Erst Flächen sichern, dann planen</span><br>
+  Setzt am Nadelöhr an: Die Gemeinde muss die Flächen überhaupt erst ins Eigentum bekommen –
+  das sei das kurzfristig dringendste Problem. Deshalb frühzeitiger und regelmäßiger Kontakt
+  zu den Landwirten. Inhaltlich gegen Vorfestlegungen: keine Gebiete nur für junge Familien
+  oder nur für Ältere, sondern gemischt wie früher – und was jemand baut, soll dem Käufer
+  überlassen bleiben.</td></tr>
+<tr><td class="who w-sinning">Sinning</td><td>
+  <span class="pos">Nicht die Flächen, die Bürokratie ist das Problem</span><br>
+  Sieht die Gebiete grundsätzlich als vorhanden – es hakt an Erschließung, Baurecht und
+  Genehmigungsdauer. Will Verfahren verschlanken. Zugleich deutlich beim Flächenschutz:
+  weniger Verbrauch, Flächen als „Tafelsilber“, mit Verweis auf Moorbrände und Starkregen.
+  Ortskerne entwickeln, die gemeindeeigene Wohnungsbaugesellschaft ertüchtigen, Fan von
+  genossenschaftlichem – also nicht gewinnorientiertem – Wohnungsbau für günstige Mieten.
+  Konkreter Vorschlag: alte, ungenutzte Spielplätze in Ausgleichsflächen umwandeln und dafür
+  anderswo bauen.</td></tr>
+<tr><td class="who w-ulrichs">Ulrichs</td><td>
+  <span class="pos">Mix – und in allen Ortsteilen</span><br>
+  Will beides und niemandem etwas vorschreiben. Betont am stärksten die Ortsteil-Gerechtigkeit:
+  Ihrhove ist als Grundzentrum wichtig, aber Bauplätze müssen in <i>allen</i> Ortschaften
+  verfügbar sein. Spricht ein Problem an, das sonst niemand nannte: In kleinen Orten sind die
+  wenigen Bauplätze oft privat für Enkelkinder reserviert und stehen Bauwilligen faktisch
+  nicht zur Verfügung.</td></tr>
+</table>
+</section>
+
+<div class="page-break"></div>
+
+<section>
+<h2>Straßenausbaubeiträge – die klarste Trennlinie des Abends</h2>
+<p>Die Nachbargemeinde Rhauderfehn hat die Beiträge abgeschafft. Mehrere Leser fragten,
+ob das auch für Westoverledingen ein Modell ist. Hier gehen die Antworten am weitesten
+auseinander – und hier zeigt sich am deutlichsten, wer sich festlegt und wer nicht.</p>
+<table>
+<tr><th style="width:23%">Kandidat</th><th>Antwort</th></tr>
+<tr><td class="who w-sinning">Sinning</td><td>
+  <span class="pos">Klar für Abschaffung</span><br>
+  Die einzige unbedingte Zusage. Nennt die Beiträge unsozial: Sie treffen Menschen, die ihr
+  Haus längst abbezahlt haben, in unvorhersehbarer Höhe und zu einem Zeitpunkt, den sie nicht
+  selbst bestimmen können. Zieht den Vergleich zum Deichbau – Gemeinschaftsaufgaben werden in
+  Ostfriesland auf alle umgelegt. Gegenfinanzierung soll aus neuen, ertragsstarken
+  Gewerbeansiedlungen kommen. Nebeneffekt: weniger Bürgerproteste, schnellere Sanierungen.</td></tr>
+<tr><td class="who w-schmidt">Schmidt</td><td>
+  <span class="pos">Abschaffung nein, Mittelweg ja</span><br>
+  Praktisches Gegenargument: Bei kompletter Abschaffung stünde die Schlange mit Anträgen
+  vor dem Rathaus, das sei nicht finanzierbar. Aber der heutige Zustand, in dem einzelne
+  Anlieger an einem Straßenausbau existenziell scheitern, Häuser verkaufen oder wegziehen
+  müssen, sei ein Unding. Der Beitrag soll spürbar, aber für jeden stemmbar sein. Setzt
+  zusätzlich auf Mitnahmeeffekte: Flurbereinigung baut komplette Straßen neu, dazu Maßnahmen
+  von Bahn und Wasserstraßenverwaltung.</td></tr>
+<tr><td class="who w-ulrichs">Ulrichs</td><td>
+  <span class="pos">Abschaffung nicht leistbar</span><br>
+  Argumentiert rein aus der Einnahmestruktur: Westoverledingen hat nicht die Steuerkraft
+  reicherer Kommunen und ist auf die Anliegerbeiträge angewiesen. Sein Spielraum liegt nicht
+  bei der Frage ob, sondern beim Ausbaustandard – es müsse nicht immer eine Vollsanierung sein.</td></tr>
+<tr><td class="who w-lenger">Lenger</td><td>
+  <span class="pos">Persönlich dagegen, aber nicht festgelegt</span><br>
+  Erklärt sich persönlich gegen die Beiträge – sie binden enorm viel Verwaltungsarbeit und
+  erzeugen regelmäßig Bürgerinitiativen, Anwaltskanzleien und böses Blut. Zugleich die
+  ehrlichste Kostenrechnung: Wer Abschaffung fordert, fordert Steuererhöhung. Verweist auf
+  Moormerland, das nach der Abschaffung nur rund 250.000 € pro Jahr für Straßensanierung im
+  Haushalt hat – zu wenig. Festlegung: „definitiv neu gestalten“, Finanzierungsform mit dem
+  Rat klären, mit Verweis auf einen SPD/Grüne-Vorschlag von 2020. Die Moderation kommentierte
+  die Antwort als noch relativ schwammig.</td></tr>
+<tr><td class="who w-kuhlmann">Kuhlmann</td><td>
+  <span class="pos">Bewusst keine Festlegung – erst rechnen</span><br>
+  Verweigert eine schnelle Antwort und liefert dafür die konkretesten Zahlen: Die Grundsteuer B
+  liegt derzeit bei rund 230 %; eine Abschaffung würde einen Hebesatz in Richtung 400–500 %
+  bedeuten – für ein einzelnes Grundstück grob 600 € mehr pro Jahr, und zwar auch für
+  Ältere mit kleinem Einkommen. Die Sanierungsliste der Gemeinde bewege sich im Millionenbereich,
+  nicht bei 250.000 €. Will der Politik eine durchgerechnete Vorlage geben. Denkbar wäre für
+  ihn eine differenzierte Lösung: bei Straßen mit fast ausschließlich Durchgangsverkehr
+  keine Anliegerbeiträge.</td></tr>
+</table>
+<div class="note small">
+  <b>Zur Grundsteuer – so hat die Runde die Karten gehalten.</b> Auf die Leserfrage, ob sie eine
+  Erhöhung der Grundsteuer in den nächsten vier Jahren befürworten, hielten die Kandidaten
+  Karten hoch: grüner Daumen für Ja, roter Daumen für Nein, Kreuz für unentschieden. Der
+  Moderator fasste das Ergebnis als „gemischt“ zusammen. Die Zuordnung lässt sich über das
+  Videobild bei etwa 1:19:14 und die Sitzordnung auf dem Podium auflösen – von links nach
+  rechts standen Sinning, Lenger, Ulrichs, Schmidt und Kuhlmann:
+  <table class="mini">
+  <tr><td class="n w-sinning">Sinning</td><td class="v">Kreuz – unentschieden</td></tr>
+  <tr><td class="n w-lenger">Lenger</td><td class="v">Kreuz – unentschieden</td></tr>
+  <tr><td class="n w-ulrichs">Ulrichs</td><td class="v">roter Daumen – nein</td></tr>
+  <tr><td class="n w-schmidt">Schmidt</td><td class="v">roter Daumen – nein</td></tr>
+  <tr><td class="n w-kuhlmann">Kuhlmann</td><td class="v">rot <i>und</i> Kreuz – nicht eindeutig</td></tr>
+  </table>
+  <b>Zwei Vorbehalte.</b> Kuhlmann hebt zunächst nur die rote Karte und nimmt Sekunden später
+  das Kreuz dazu; dazu passt seine Bemerkung, er habe das vorhin schon gesagt – gemeint ist
+  seine Rechnung, dass ohne Straßenausbaubeiträge die Grundsteuer B von rund 230 % auf 400 bis
+  500 % steigen müsste. Sein Signal ist also eher ein „kommt darauf an“ als ein Nein. Auch
+  Sinning hält kurz zuvor noch die rote Karte in der Hand, bevor er das Kreuz zeigt. Ein
+  einzelnes Standbild gibt die Runde deshalb nur begrenzt wieder. Einen grünen Daumen zeigt
+  in dieser Sequenz niemand. Unstrittig bleibt die Sachlogik, die Lenger und Kuhlmann
+  übereinstimmend benannten: Ohne Straßenausbaubeiträge steigt die Grundsteuer.
+</div>
+</section>
+
+<section>
+<h2>Schulwegsicherheit: Reicht Tempo 30?</h2>
+<p>Ein Ratsbeschluss zu Tempo 30 vor Kitas und Schulen liegt bereits vor. Die Frage war,
+ob das genügt. Alle fünf sagen: Es ist ein Anfang, mehr nicht. Bemerkenswert ist die
+Einigkeit bei der Ursache – die Elterntaxis.</p>
+<table>
+<tr><th style="width:23%">Kandidat</th><th>Vorschlag</th></tr>
+<tr><td class="who w-kuhlmann">Kuhlmann</td><td>Nennt Elterntaxis als Hauptproblem. Sehr konkret aus
+  der eigenen Praxis in Nordhümmling: die „30“ jedes Jahr neu auf die <i>Fahrbahn</i> lackieren,
+  nicht nur ein Schild aufstellen – das sieht jeder Fahrer. Weist auf die Zuständigkeit hin:
+  Viele betroffene Straßen sind Kreisstraßen, hier braucht es ein offenes Ohr beim Landkreis.</td></tr>
+<tr><td class="who w-lenger">Lenger</td><td>Setzt am wenigsten auf Technik, am meisten auf
+  Verhalten: Elterntaxis fahren, weil Eltern Angst haben – und verschärfen damit die Gefahr
+  selbst. Lösung: Fahrrad-Busse und Laufgruppen stärken, gemeinsam mit Schulen und Eltern
+  Überzeugungsarbeit leisten. Realistisch: Parkverbotszonen vor Schulen werden ohnehin
+  ignoriert. Kostet kein Geld, sondern Bewusstseinswandel.</td></tr>
+<tr><td class="who w-schmidt">Schmidt</td><td>Am nächsten am Alltag – schildert das Chaos an der
+  Grundschule seines Kindes in Großwolde. Kritisiert konkret: ein viel zu schmaler Radweg,
+  eine Fahrradstraße, auf der niemand sein sechsjähriges Kind fahren lässt, und
+  widersprüchliche Tempolimits (in eine Richtung 30, in die andere 50). Seine günstigen
+  Vorschläge: Zebrastreifen und rot markierte Radwegquerungen. Nennt eine konkrete
+  Gefahrenstelle an der Bundesstraße in Großwolde.</td></tr>
+<tr><td class="who w-sinning">Sinning</td><td>Findet die Frage zu eng gestellt: Es braucht ein
+  Maßnahmenbündel – bauliche Kennzeichnung des Schulumfelds, Fußgängerüberwege, gegebenenfalls
+  Ampeln, Stärkung des Radverkehrs und sichere Bushaltestellen. Setzt daneben auf Einsicht
+  der Fahrer, von denen viele selbst Eltern sind.</td></tr>
+<tr><td class="who w-ulrichs">Ulrichs</td><td>Kürzeste Antwort, klare Linie: Tempo 30 passt nicht
+  überall gleich gut. Es braucht individuelle Lösungen pro Schulstandort, dort wo nötig auch
+  bauliche Maßnahmen wie Schwellen – die aber an einer Hauptstraße nicht funktionieren.</td></tr>
+</table>
+</section>
+
+<div class="page-break"></div>
+
+<section>
+<h2>Wirtschaft: „Gemeinde der Spezialisten“ – und dann?</h2>
+<p>Gefragt war, was der Wirtschaftsstandort am dringendsten braucht. Hier trennen sich die
+Kandidaten in zwei Lager: die einen wollen die Struktur verändern, die anderen sie besser
+bedienen.</p>
+<table>
+<tr><th style="width:23%">Kandidat</th><th>Ansatz</th></tr>
+<tr><td class="who w-kuhlmann">Kuhlmann</td><td>
+  <span class="pos">Realismus + Chefsache</span><br>
+  Am nüchternsten: Großindustrie wird sich hier nicht ansiedeln, dafür fehlen die Flächen.
+  Westoverledingen sei eine Wohn- und Pendlergemeinde zwischen Papenburg und Leer mit vielen
+  guten kleinen Betrieben – und größter Arbeitgeber ist derzeit die Gemeinde selbst, was er
+  nicht als Ziel sieht. Wichtiger Haushaltshinweis: Die Gemeinde lebt vor allem vom Anteil
+  an der Lohn- und Einkommensteuer, von der Gewerbesteuer bleiben nur rund 20 % vor Ort.
+  Sein Vorschlag: Wirtschaftsförderung als Stabsstelle direkt beim Bürgermeister. Kritik:
+  Das Gewerbegebiet an der B70 wird nicht einmal ordentlich gepflegt oder beworben,
+  obwohl Interessenten da sind.</td></tr>
+<tr><td class="who w-lenger">Lenger</td><td>
+  <span class="pos">Grüne Wirtschaft als Standortchance</span><br>
+  Sieht die Streuung über viele Mittelständler als Stärke – anders als Orte, die am Tropf
+  eines einzigen Unternehmens hängen. Seine drei Standortvorteile: Windstrom fließt durch die
+  Region, Wasserstoffleitungen liegen in der Nähe, und der Internetknoten Oldenburg ist nah
+  genug für schnelle, verlustarme Datenverbindungen. Daraus: Zukunftsbranchen ansiedeln
+  <i>und</i> bestehende Betriebe stärken, besonders beim anstehenden Generationswechsel.
+  Zur Landwirtschaft klar: Photovoltaik lieber auf Gebäude und bereits versiegelte Flächen
+  (z.&nbsp;B. Supermarktparkplätze) als auf Freiflächen.</td></tr>
+<tr><td class="who w-schmidt">Schmidt</td><td>
+  <span class="pos">Hindernisse wegräumen</span><br>
+  Benennt die Standortnachteile offen: kein Autobahnanschluss – im Landkreis die schwierigste
+  Lage – und die Brücke über die Leda. Rund 80 % der Menschen arbeiten außerhalb der Gemeinde.
+  Für die, die hier etwas aufbauen wollen, müsse alles Menschenmögliche schnell gehen; die
+  öffentliche Verwaltung habe da Nachholbedarf. Sieht im Strukturwandel der Landwirtschaft
+  – weniger, größere Betriebe – eine wiederkehrende Chance, an Flächen zu kommen, wenn man
+  früh im Gespräch ist.</td></tr>
+<tr><td class="who w-sinning">Sinning</td><td>
+  <span class="pos">Digitalisierung + Zukunftsindustrie</span><br>
+  Der ambitionierteste Vorschlag des Abends: ein KI-Rechenzentrum, das nach seinen Angaben
+  rund 450 Arbeitsplätze bräuchte – auch handwerkliche in Klima- und Energietechnik – und die
+  Gewerbeeinnahmen der Gemeinde verdoppeln könnte. Dazu die Verwaltung digitalisieren, wofür
+  er seine beruflichen Kontakte einbringen will. Standortvorteile: Lage zwischen Leer und
+  Papenburg, künftiger Bahn-Haltepunkt.</td></tr>
+<tr><td class="who w-ulrichs">Ulrichs</td><td>
+  <span class="pos">Verwaltung als Dienstleister</span><br>
+  Spricht als Betroffener: Für einen jährlichen Antrag muss er persönlich zur
+  Gemeindeverwaltung, dort warten und den Bescheid später per Post erhalten – Zeit, die
+  Unternehmen nicht haben. Daraus die Forderung nach mehr Digitalisierung und Tempo.
+  Zweiter Punkt: Wirtschaftsförderung soll aktiv auf die Firmen zugehen und regelmäßig fragen,
+  wo der Schuh drückt, statt zu warten. Wertet den gesunden Branchenmix als Stärke, weil die
+  Gemeinde so nicht von einem Großbetrieb abhängt.</td></tr>
+</table>
+</section>
+
+<section class="avoid">
+<h2>Parteibindung und Umgang mit der AfD</h2>
+<table>
+<tr><th style="width:23%">Kandidat</th><th>Zur eigenen Parteifrage</th><th>Zum Umgang mit der AfD im Rat</th></tr>
+<tr><td class="who w-kuhlmann">Kuhlmann</td>
+  <td>Bewusst parteilos. Will alle an einen Tisch holen; Transparenz, Ehrlichkeit und
+  Bürgernähe gehören für ihn zusammen.</td>
+  <td>Verweist auf die Rechtslage: Der Bürgermeister muss alle Ratsmitglieder gleich behandeln,
+  daran lässt sich nichts ändern. Für Ordnung in Sitzungen sei der Ratsvorsitz zuständig, den
+  der Bürgermeister unterstützt. Erwartet als Nebeneffekt, dass der Rat kleiner wird – von
+  32 plus Bürgermeister auf vielleicht 26 –, weil nicht besetzbare Sitze entfallen.</td></tr>
+<tr><td class="who w-lenger">Lenger</td>
+  <td>Bleibt Grüner und verteidigt das offensiv: Parteien koppeln zurück, was in Hannover,
+  Berlin und Brüssel entschieden wird. Beispiel aus dem Wahlkampf: Über eine
+  Bundestagsabgeordnete ließ sich schnell klären, ob Regionalexpress-Züge in Ihrhove halten
+  können.</td>
+  <td>Die inhaltlich schärfste Antwort: verweist darauf, dass die AfD in Niedersachsen als
+  rechtsextremistisch eingestuft ist. Als Demokrat nimmt er ein Wahlergebnis hin und begegnet
+  gewählten Mitgliedern respektvoll – zieht aber eine klare Grenze bei menschen- oder
+  demokratieverachtenden Äußerungen und Anträgen und erwartet dabei Rückendeckung aller
+  Fraktionen.</td></tr>
+<tr><td class="who w-schmidt">Schmidt</td>
+  <td>Hält Parteiengeplänkel auf dem Dorf für fehl am Platz. Ordnet sich von der Herkunft her
+  dem konservativen, landwirtschaftlich geprägten Lager zu.</td>
+  <td>Die pragmatischste Antwort: Wer mithilft, die Probleme vor Ort zu lösen, ist willkommen –
+  die Parteifarbe sei ihm egal. Respektvoller Umgang als Grundregel.</td></tr>
+<tr><td class="who w-sinning">Sinning</td>
+  <td>Nennt sich parteiunabhängig, nicht parteilos: FDP-Mitglied, würde bei einer Wahl
+  austreten. Die FDP tritt hier nicht an, er wird von keiner Partei unterstützt und ist an
+  kein Parteiprogramm gebunden. Empfiehlt den Wählern, kumulieren und panaschieren zu nutzen.</td>
+  <td>Stellt das Grundgesetz in den Mittelpunkt und hält die AfD für verfassungsgefährdend –
+  vor allem, weil sie den Diskussionsrahmen verschoben habe, etwa hin zur Frage der Herkunft.
+  Kommunal sei sie ihm bisher kaum aufgefallen. Betont, dass der Bürgermeister sein Amt
+  parteiunabhängig führt und alle Mandatsträger gleich behandelt.</td></tr>
+<tr><td class="who w-ulrichs">Ulrichs</td>
+  <td>Nach rund 40 Jahren aus der CDU ausgetreten, um für alle Fraktionen ansprechbar zu sein.
+  Bleibt nach eigener Aussage definitiv parteilos.</td>
+  <td>Weist auf die Zahlen hin: Die AfD hat in Westoverledingen nur zwei Kandidaten
+  nominiert, es kann also keine größere Fraktion entstehen. Er kennt beide nicht persönlich.
+  Sein Anspruch: Der gute, sachliche Umgang im Rat soll erhalten bleiben, und der Bürgermeister
+  muss dabei vermitteln.</td></tr>
+</table>
+</section>
+
+<div class="page-break"></div>
+
+<section>
+<h2>Wo die eigentlichen Unterschiede liegen</h2>
+<p>Bei vielen Sachfragen lagen die fünf erstaunlich nah beieinander: Reithalle erhalten,
+Bauplätze schaffen, Verwaltung beschleunigen, respektvoller Umgang im Rat. Die echten
+Unterschiede liegen weniger im Ziel als im Typ – und in drei Grundsatzfragen.</p>
+
+<div class="axis">
+  <div class="t">1. Fachmann oder Moderator an der Spitze?</div>
+  <p style="margin:0;">Die Kernfrage des Abends, von der Moderation ausdrücklich so benannt.
+  <b>Kuhlmann</b> sagt: Die Gemeinde ist mit rund 22.000 Einwohnern die drittgrößte im Landkreis,
+  kein kleiner Betrieb – dafür braucht es Verwaltungshandwerk, und er könnte sofort loslegen.
+  <b>Ulrichs</b> hält exakt dagegen: Die Verwaltung ist fachlich gut besetzt, an der Spitze
+  braucht es keinen weiteren Verwaltungsmitarbeiter, sondern jemanden, der Menschen führt.
+  <b>Schmidt</b> räumt Lücken im Verwaltungsrecht offen ein und verweist auf die Fachleute im
+  Haus. <b>Sinning</b> und <b>Lenger</b> beanspruchen einen dritten Weg: Führungs- und
+  Projekterfahrung aus komplexen Organisationen von außen.</p>
+  <div class="poles">
+    <div><span class="ph">Eher Fachlichkeit</span>Kuhlmann · (Sinning)</div>
+    <div><span class="ph">Eher Führung &amp; Ausgleich</span>Ulrichs · Schmidt · Lenger</div>
+  </div>
+</div>
+
+<div class="axis">
+  <div class="t">2. Wachsen oder umbauen?</div>
+  <p style="margin:0;">Hinter der Bauplatzfrage steckt ein echter Richtungsstreit.
+  <b>Kuhlmann</b> argumentiert, dass die Gemeinde nur durch neue Baugebiete gewachsen ist und
+  ohne Angebot die vorhandene Infrastruktur – Kitas, Schulen – leerzulaufen droht.
+  <b>Lenger</b> setzt spiegelbildlich auf rund 70 % Innenentwicklung, um lebendige Zentren zu
+  erhalten und Fläche zu sparen. <b>Sinning</b> steht ihm hier näher als man erwarten würde:
+  Flächenschutz, Ortskerne, genossenschaftlicher Wohnungsbau. <b>Schmidt</b> und <b>Ulrichs</b>
+  wollen beides ohne Quote.</p>
+  <div class="poles">
+    <div><span class="ph">Eher neue Baugebiete</span>Kuhlmann · Schmidt</div>
+    <div><span class="ph">Eher Innenentwicklung</span>Lenger · Sinning</div>
+  </div>
+</div>
+
+<div class="axis">
+  <div class="t">3. Festlegen oder erst rechnen?</div>
+  <p style="margin:0;">Bei den Straßenausbaubeiträgen zeigte sich der deutlichste Stilunterschied.
+  <b>Sinning</b> legte sich als Einziger unbedingt fest (abschaffen). <b>Ulrichs</b> und
+  <b>Schmidt</b> gaben eine klare, wenn auch abwägende Richtung. <b>Kuhlmann</b> verweigerte die
+  Festlegung bewusst und lieferte stattdessen Zahlen; <b>Lenger</b> nannte seine persönliche
+  Haltung, blieb bei der Zusage aber vage – was die Moderation direkt ansprach. Ob das
+  Verantwortungsbewusstsein oder Ausweichen ist, ist eine Bewertungsfrage, die jede
+  Wählerin und jeder Wähler selbst beantworten muss.</p>
+  <div class="poles">
+    <div><span class="ph">Klare Festlegung</span>Sinning · Ulrichs · Schmidt</div>
+    <div><span class="ph">Erst prüfen, dann entscheiden</span>Kuhlmann · Lenger</div>
+  </div>
+</div>
+</section>
+
+<section class="page-break">
+<h2>Fünf Fragen, die Ihre Entscheidung erleichtern</h2>
+
+<div class="q"><div class="qt">Soll im Rathaus sofort gearbeitet oder zuerst neu gedacht werden?</div>
+<p>Wenn Ihnen wichtig ist, dass am ersten Amtstag ohne Einarbeitung gehandelt wird, führt
+kein Weg an <b>Kuhlmann</b> vorbei – er ist der Einzige mit voller kommunaler Verwaltungslaufbahn
+inklusive Kämmerer- und Erster-Gemeinderat-Erfahrung. Wenn Sie umgekehrt finden, dass genau
+diese Nähe zur bisherigen Verwaltung das Problem ist, sind <b>Schmidt</b>, <b>Ulrichs</b> und
+<b>Sinning</b> die Gegenentwürfe.</p></div>
+
+<div class="q"><div class="qt">Wie viel Politik soll im Rathaus stecken?</div>
+<p><b>Lenger</b> ist der Einzige mit Parteibindung – und macht daraus ein offenes Angebot:
+Netzwerke bis Hannover und Berlin, dafür ein grünes Etikett. Die anderen vier setzen bewusst
+auf Parteilosigkeit beziehungsweise Parteiunabhängigkeit. Für eine Gemeinde, die auf
+Fördermittel und Entscheidungen von Kreis, Land und Bund angewiesen ist, ist das keine
+Nebensache – Kuhlmann sprach das Thema Landkreis bei den Kreisstraßen von der anderen
+Seite her an.</p></div>
+
+<div class="q"><div class="qt">Was ist Ihr wichtigstes Einzelthema?</div>
+<p>Reithalle: die härteste Erhaltungszusage kommt von <b>Sinning</b>, die klarste
+Entscheidungszusage von <b>Lenger</b>. Bauplätze in Ihrhove: <b>Kuhlmann</b> und <b>Ulrichs</b>.
+Bauplätze in den kleineren Ortschaften: <b>Ulrichs</b> und <b>Schmidt</b>. Straßenausbaubeiträge
+abschaffen: nur <b>Sinning</b>. Innenentwicklung und Ortskerne: <b>Lenger</b>.
+Digitale Verwaltung: <b>Sinning</b> und <b>Ulrichs</b>. Flächen von Landwirten sichern:
+<b>Schmidt</b>. Jugendpolitik: nur <b>Lenger</b> nannte sie – und zwar erst im Schlusswort,
+mit dem Hinweis, dass sie im Wahlkampf zu kurz gekommen sei.</p></div>
+
+<div class="q"><div class="qt">Wollen Sie Wachstum oder Bestandspflege?</div>
+<p>Die Zahlen, die im Raum standen, gehen in beide Richtungen: rund 3.000 Einwohner mehr seit
+2014, aber 80 Geburten weniger pro Jahr und erste geschlossene Krippengruppen. Wer daraus
+den Auftrag „mehr anbieten, sonst laufen die Einrichtungen leer“ liest, landet bei
+<b>Kuhlmann</b>. Wer daraus liest, dass die Gemeinde in eine andere Phase eintritt und
+umbauen statt ausdehnen muss, landet bei <b>Lenger</b> und <b>Sinning</b>.</p></div>
+
+<div class="q"><div class="qt">Rechnen Sie mit der Stichwahl?</div>
+<p>Bei fünf Bewerbern ist eine Stichwahl am 27. September wahrscheinlich – die Moderation
+sagte das am Ende selbst. Kein Kandidat wollte sich festlegen, wen er im Fall des eigenen
+Ausscheidens unterstützen würde; nur <b>Kuhlmann</b> deutete an, er werde nach diesem Abend
+für sich entscheiden. Ihre Erststimme ist damit tatsächlich frei: Sie müssen nicht taktisch
+wählen, sondern können den Bewerber wählen, den Sie inhaltlich am überzeugendsten finden.</p></div>
+</section>
+
+<section class="avoid">
+<h2>Was an diesem Abend offen blieb</h2>
+<p>Für eine faire Entscheidung gehört dazu, was <i>nicht</i> besprochen wurde. Die Runde
+kam wegen der Zeit nicht durch alle Leserfragen. Nicht oder nur am Rand behandelt wurden:</p>
+<ul>
+<li><b>Kinderbetreuung, Schulen und Jugendarbeit</b> – kamen nur als Nebenaspekt der Bau- und
+Verkehrsdebatte vor. Lenger merkte selbst an, dass Jugendpolitik im Wahlkampf zu kurz kam.</li>
+<li><b>Haushalt und Sparzwang im Detail</b> – dass die Finanzlage angespannt ist, sagten
+mehrere Kandidaten (Kuhlmann, Schmidt) ausdrücklich. Konkrete Prioritäten, wo im Zweifel
+gekürzt wird, blieben offen.</li>
+<li><b>Ärztliche Versorgung, Pflege und Senioren</b> – nur als Randnotiz.</li>
+<li><b>Öffentlicher Nahverkehr</b> – außer dem Bahn-Haltepunkt Ihrhove kein Thema.</li>
+<li><b>Vereine und Ehrenamt jenseits des Reitvereins</b> – Kuhlmann streifte die Verteilungsfrage
+zwischen Breitensport und Reitsport, vertieft wurde sie nicht.</li>
+<li><b>Personalführung im Rathaus</b> – zwar von mehreren als Stärke reklamiert, aber nicht
+an konkreten Vorhaben überprüft.</li>
+</ul>
+<p>Alle fünf standen nach der Veranstaltung noch für persönliche Fragen zur Verfügung.
+Wenn Ihnen eines dieser Themen wichtig ist, lohnt die direkte Nachfrage – schriftlich
+oder bei einer der letzten Wahlkampfveranstaltungen.</p>
+</section>
+
+<section class="avoid">
+<h2>Praktisches zur Wahl</h2>
+<table>
+<tr><td class="who" style="width:30%">Wahltag</td><td>Sonntag, 13. September 2026, 8 bis 18 Uhr</td></tr>
+<tr><td class="who">Mögliche Stichwahl</td><td>Sonntag, 27. September 2026 – bei fünf Bewerbern wahrscheinlich, wenn niemand über 50 % erreicht</td></tr>
+<tr><td class="who">Gleichzeitig gewählt</td><td>Gemeinderat, Ortsräte und Kreistag</td></tr>
+<tr><td class="who">Kumulieren &amp; panaschieren</td><td>Gilt für die Rats- und Kreistagswahl, nicht für die Bürgermeisterwahl: Dort haben Sie eine Stimme für eine Person. Bei den Ratswahlen können Sie drei Stimmen vergeben, auch mehrere an eine Person (kumulieren) oder über Listen hinweg verteilen (panaschieren). Sinning und Lenger wiesen beide ausdrücklich darauf hin.</td></tr>
+<tr><td class="who">Briefwahl</td><td>Unterlagen über die Gemeinde Westoverledingen; rechtzeitig beantragen</td></tr>
+</table>
+</section>
+
+<footer class="small mute">
+<p><b>Quelle:</b> „Kommunalwahl 2026 | Podiumsdiskussion Westoverledingen“, Videoaufzeichnung
+der Politikarena von General-Anzeiger und Ostfriesen-Zeitung, aufgezeichnet am 3. September 2026
+im Gasthaus in Flachsmeer, veröffentlicht am 4. September 2026 auf dem Kanal
+„ostfriesen.tv Redaktion“ (Laufzeit 1:44:59). Moderation: Henrik Zein (Redaktionsleiter
+General-Anzeiger) und Karsten Ammermann.</p>
+<p><b>Methodik und Grenzen:</b> Ausgewertet wurde das vollständige automatisch erzeugte
+Transkript der Aufzeichnung. Alle wiedergegebenen Positionen sind sinngemäße Zusammenfassungen,
+keine wörtlichen Zitate. Die automatische Spracherkennung gibt Eigennamen, Ortsnamen und
+einzelne Zahlen teils fehlerhaft wieder; Angaben mit erkennbarer Unsicherheit wurden
+weggelassen oder als unsicher gekennzeichnet. Die Zuordnung der Karten zur Grundsteuerfrage
+wurde nicht der Tonspur entnommen, sondern dem Videobild bei etwa 1:19:14; die dafür nötige
+Sitzordnung wurde über die Vorstellungsrunde verifiziert, indem zu jeder der fünf
+Selbstvorstellungen geprüft wurde, wer das Mikrofon hält. Die Reihenfolge der Kandidaten ist
+durchgehend alphabetisch; die Zuordnung von Kandidaten zu Polen im Abschnitt
+„Wo die eigentlichen Unterschiede liegen“ ist eine Einordnung der jeweiligen Aussagen dieses
+Abends, keine Bewertung der Personen. Dieses Dokument enthält keine Wahlempfehlung.
+Andere Wahlkampfmaterialien, Programme und Presseberichte wurden nicht ausgewertet.</p>
+<p>Erstellt am 5. September 2026.</p>
+</footer>
+
+</body>
+</html>

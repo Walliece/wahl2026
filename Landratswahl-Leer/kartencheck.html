@@ -1,0 +1,593 @@
+<title>Rote Karte, grüne Karte</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap">
+<style>
+:root{
+  --ground:#f2f5f4;
+  --surface:#ffffff;
+  --surface-2:#e9eeec;
+  --ink:#16211f;
+  --muted:#5b6a67;
+  --line:#d3dbd8;
+  --line-strong:#b3bfbc;
+  --accent:#0b4a4e;
+  --accent-soft:#dfeceb;
+  --green:#2f6d47;
+  --green-soft:#e2efe6;
+  --red:#9d3b32;
+  --red-soft:#f6e5e2;
+  --bade:#8a6a2f;
+  --groote:#2f5d7c;
+  --voelker:#6b4a7a;
+  --shadow:0 1px 2px rgba(22,33,31,.06), 0 8px 24px -18px rgba(22,33,31,.5);
+  --sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --mono:"IBM Plex Mono","SF Mono",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#0e1614;
+    --surface:#151f1d;
+    --surface-2:#1d2927;
+    --ink:#e7edeb;
+    --muted:#9aa8a5;
+    --line:#2a3634;
+    --line-strong:#3d4b48;
+    --accent:#63b6ae;
+    --accent-soft:#1a2c2c;
+    --green:#57a473;
+    --green-soft:#1b2a21;
+    --red:#cf7268;
+    --red-soft:#2c1d1b;
+    --bade:#c9a35c;
+    --groote:#6ba3ce;
+    --voelker:#ab8ac0;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -18px rgba(0,0,0,.9);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0e1614;
+  --surface:#151f1d;
+  --surface-2:#1d2927;
+  --ink:#e7edeb;
+  --muted:#9aa8a5;
+  --line:#2a3634;
+  --line-strong:#3d4b48;
+  --accent:#63b6ae;
+  --accent-soft:#1a2c2c;
+  --green:#57a473;
+  --green-soft:#1b2a21;
+  --red:#cf7268;
+  --red-soft:#2c1d1b;
+  --bade:#c9a35c;
+  --groote:#6ba3ce;
+  --voelker:#ab8ac0;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px -18px rgba(0,0,0,.9);
+}
+
+*{box-sizing:border-box;}
+body{
+  background:var(--ground);
+  color:var(--ink);
+  font-family:var(--serif);
+  font-size:17px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:680px;margin:0 auto;padding:28px 20px 64px;}
+
+/* ---------- Kopf ---------- */
+.eyebrow{
+  font-family:var(--sans);font-size:11.5px;font-weight:600;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 10px;
+}
+h1{
+  font-family:var(--sans);font-weight:700;font-size:clamp(30px,7vw,44px);
+  line-height:1.05;letter-spacing:-.02em;margin:0 0 14px;text-wrap:balance;
+}
+h1 .g{color:var(--green);} h1 .r{color:var(--red);}
+.standfirst{font-size:18px;color:var(--ink);margin:0 0 18px;max-width:60ch;}
+.disclaimer{
+  font-family:var(--sans);font-size:13px;line-height:1.5;color:var(--muted);
+  border-left:2px solid var(--line-strong);padding:2px 0 2px 14px;margin:0 0 30px;max-width:62ch;
+}
+.disclaimer b{color:var(--ink);font-weight:600;}
+
+/* ---------- Fortschritt ---------- */
+.progress{display:flex;flex-direction:column;gap:9px;margin-bottom:16px;}
+.rail{display:flex;gap:3px;}
+.tick{
+  flex:1;height:5px;background:var(--line);border-radius:1px;
+  transition:background .18s ease;
+}
+.tick.done{background:var(--accent);}
+.tick.now{background:var(--ink);}
+.tick.skip{background:var(--line-strong);}
+.counter{
+  display:flex;justify-content:space-between;align-items:baseline;
+  font-family:var(--mono);font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;
+}
+
+/* ---------- Thesenkarte ---------- */
+.sheet{
+  background:var(--surface);border:1px solid var(--line);border-radius:3px;
+  box-shadow:var(--shadow);padding:24px 22px 20px;
+}
+.src{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  border:1px solid var(--line);border-radius:2px;padding:3px 8px;margin-bottom:16px;
+}
+.src .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none;}
+.src.word .dot{background:var(--line-strong);}
+.these{
+  font-family:var(--serif);font-size:clamp(21px,4.4vw,25px);line-height:1.32;
+  font-weight:600;margin:0 0 6px;text-wrap:balance;
+}
+.hint{font-family:var(--sans);font-size:13px;color:var(--muted);margin:0 0 20px;}
+
+/* ---------- Karten-Buttons ---------- */
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+.kartebtn{
+  font-family:var(--sans);font-size:15px;font-weight:600;color:#fff;
+  border:none;border-radius:3px;padding:20px 14px 16px;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;gap:9px;
+  position:relative;transition:transform .12s ease,filter .12s ease;
+}
+.kartebtn::before{
+  content:"";width:26px;height:34px;border-radius:2px;
+  background:rgba(255,255,255,.9);border:1px solid rgba(255,255,255,.5);
+  box-shadow:inset 0 0 0 3px currentColor;
+}
+.kartebtn.ja{background:var(--green);color:var(--green);}
+.kartebtn.nein{background:var(--red);color:var(--red);}
+.kartebtn span{color:#fff;}
+.kartebtn:hover{transform:translateY(-2px);filter:brightness(1.07);}
+.kartebtn[aria-pressed="true"]{outline:3px solid var(--ink);outline-offset:2px;}
+.minor{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.minorbtn{
+  font-family:var(--sans);font-size:14px;font-weight:500;
+  background:var(--surface);color:var(--ink);border:1px solid var(--line-strong);
+  border-radius:3px;padding:11px 10px;cursor:pointer;transition:background .12s ease;
+}
+.minorbtn:hover{background:var(--surface-2);}
+.minorbtn[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+
+.rowtools{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  margin-top:18px;padding-top:14px;border-top:1px solid var(--line);flex-wrap:wrap;
+}
+.weight{
+  display:inline-flex;align-items:center;gap:8px;cursor:pointer;
+  font-family:var(--sans);font-size:13px;color:var(--muted);
+}
+.weight input{width:15px;height:15px;accent-color:var(--accent);margin:0;}
+.weight.on{color:var(--ink);font-weight:500;}
+.linkbtn{
+  font-family:var(--sans);font-size:13.5px;background:none;border:none;padding:4px 0;
+  color:var(--accent);cursor:pointer;text-decoration:underline;text-underline-offset:3px;
+}
+.linkbtn[disabled]{color:var(--muted);opacity:.5;cursor:default;text-decoration:none;}
+.keys{font-family:var(--mono);font-size:11px;color:var(--muted);margin:14px 0 0;text-align:center;}
+
+/* ---------- Ergebnis ---------- */
+h2{
+  font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);margin:38px 0 14px;
+}
+h2:first-child{margin-top:0;}
+.scope{display:flex;gap:0;border:1px solid var(--line-strong);border-radius:3px;overflow:hidden;margin-bottom:20px;}
+.scope button{
+  flex:1;font-family:var(--sans);font-size:13px;font-weight:500;padding:9px 8px;
+  background:var(--surface);color:var(--ink);border:none;cursor:pointer;
+}
+.scope button+button{border-left:1px solid var(--line-strong);}
+.scope button[aria-pressed="true"]{background:var(--ink);color:var(--surface);}
+
+.res{display:flex;flex-direction:column;gap:18px;}
+.cand{display:grid;grid-template-columns:1fr auto;gap:4px 12px;align-items:baseline;}
+.cand .nm{font-family:var(--sans);font-weight:600;font-size:17px;}
+.cand .pty{font-family:var(--sans);font-weight:400;font-size:13px;color:var(--muted);}
+.cand .pct{font-family:var(--mono);font-size:20px;font-variant-numeric:tabular-nums;font-weight:500;}
+.bar{grid-column:1/-1;height:12px;background:var(--surface-2);border-radius:2px;overflow:hidden;}
+.bar i{display:block;height:100%;border-radius:2px;transition:width .5s cubic-bezier(.2,.7,.3,1);}
+.cand .meta{grid-column:1/-1;font-family:var(--sans);font-size:12px;color:var(--muted);}
+.c-bade .pct,.c-bade .nm{color:var(--bade);} .c-bade .bar i{background:var(--bade);}
+.c-groote .pct,.c-groote .nm{color:var(--groote);} .c-groote .bar i{background:var(--groote);}
+.c-voelker .pct,.c-voelker .nm{color:var(--voelker);} .c-voelker .bar i{background:var(--voelker);}
+
+.readout{
+  font-family:var(--sans);font-size:13.5px;line-height:1.55;color:var(--muted);
+  background:var(--accent-soft);border-radius:3px;padding:13px 15px;margin-top:20px;
+}
+.readout b{color:var(--ink);font-weight:600;}
+
+/* ---------- Vergleichsliste ---------- */
+.cmp{display:flex;flex-direction:column;gap:10px;}
+.cmpitem{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:13px 15px;}
+.cmpitem .t{font-size:15.5px;line-height:1.4;margin:0 0 10px;}
+.cmpitem .t .no{font-family:var(--mono);font-size:12px;color:var(--muted);margin-right:7px;}
+.chips{display:flex;flex-wrap:wrap;gap:6px;}
+.chip{
+  font-family:var(--sans);font-size:11.5px;font-weight:500;
+  border:1px solid var(--line-strong);border-radius:2px;padding:2px 7px;color:var(--muted);
+  display:inline-flex;align-items:center;gap:5px;
+}
+.chip b{font-weight:600;color:var(--ink);}
+.chip.match{border-color:var(--green);background:var(--green-soft);}
+.chip.match b{color:var(--green);}
+.chip.miss{border-color:var(--red);background:var(--red-soft);}
+.chip.miss b{color:var(--red);}
+.chip.you{border-color:var(--ink);background:var(--surface-2);}
+.chip.you b{color:var(--ink);}
+
+/* ---------- Positionstabelle ---------- */
+details{border-top:1px solid var(--line);margin-top:34px;padding-top:14px;}
+summary{
+  font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer;
+  color:var(--accent);list-style:none;padding:4px 0;
+}
+summary::-webkit-details-marker{display:none;}
+summary::before{content:"› ";display:inline-block;transition:transform .15s ease;}
+details[open] summary::before{content:"⌄ ";}
+.tablewrap{overflow-x:auto;margin-top:12px;-webkit-overflow-scrolling:touch;}
+table{border-collapse:collapse;width:100%;min-width:540px;font-family:var(--sans);font-size:13px;}
+th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line);vertical-align:top;}
+th{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;border-bottom:1.5px solid var(--line-strong);}
+td.tx{width:52%;line-height:1.4;}
+td.p{text-align:center;white-space:nowrap;font-weight:600;}
+.p.ja{color:var(--green);} .p.nein{color:var(--red);} .p.na{color:var(--muted);font-weight:400;}
+th.hb{color:var(--bade);} th.hg{color:var(--groote);} th.hv{color:var(--voelker);}
+
+footer{
+  margin-top:40px;padding-top:18px;border-top:1px solid var(--line);
+  font-family:var(--sans);font-size:12.5px;line-height:1.6;color:var(--muted);
+}
+footer p{margin:0 0 9px;}
+footer b{color:var(--ink);font-weight:600;}
+
+.restart{
+  font-family:var(--sans);font-size:14px;font-weight:600;margin-top:26px;
+  background:var(--ink);color:var(--ground);border:none;border-radius:3px;
+  padding:12px 20px;cursor:pointer;
+}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;}}
+@media (max-width:420px){
+  .cards{grid-template-columns:1fr;}
+  .minor{grid-template-columns:1fr;}
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Landratswahl Landkreis Leer · 13. September 2026</p>
+  <h1><span class="r">Rote Karte,</span><br><span class="g">grüne Karte</span></h1>
+  <p class="standfirst">Beim Wahlpodium am 20.&nbsp;August 2026 mussten Olaf Bade, Matthias Groote und
+  Jens Völker zehn Fragen ohne Worte beantworten – nur mit einer roten oder einer grünen Karte.
+  Beantworten Sie dieselben zehn Fragen und vier weitere aus den Wortbeiträgen des Abends,
+  und Sie sehen, wo Sie zusammenpassen.</p>
+  <p class="disclaimer"><b>Was das hier ist:</b> eine private Auswertung der öffentlichen
+  Videoaufzeichnung. Weil im Video niemand ausspricht, wer welche Karte hochhält, wurde die
+  Kartenrunde Einzelbild für Einzelbild ausgewertet. Diese Seite stammt <b>nicht</b> von der
+  Ostfriesen-Zeitung, nicht von ostfriesen.tv und nicht von den Kandidaten. Sie ist keine
+  Wahlempfehlung.</p>
+</header>
+
+<main>
+<section id="quiz" aria-label="Fragebogen">
+  <div class="progress">
+    <div class="rail" id="rail" aria-hidden="true"></div>
+    <div class="counter">
+      <span id="cnt">These 1 von 14</span>
+      <span id="blocklabel">Kartenrunde</span>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <div class="src" id="src"><span class="dot"></span><span id="srctext">Karte · 45:48</span></div>
+    <p class="these" id="these">…</p>
+    <p class="hint" id="hint"></p>
+
+    <div class="cards">
+      <button class="kartebtn ja" id="bJa" aria-pressed="false"><span>Stimme zu</span></button>
+      <button class="kartebtn nein" id="bNein" aria-pressed="false"><span>Stimme nicht zu</span></button>
+    </div>
+    <div class="minor">
+      <button class="minorbtn" id="bNeutral" aria-pressed="false">Neutral</button>
+      <button class="minorbtn" id="bSkip" aria-pressed="false">These überspringen</button>
+    </div>
+
+    <div class="rowtools">
+      <label class="weight" id="wLabel">
+        <input type="checkbox" id="wBox">
+        <span>Besonders wichtig – zählt doppelt</span>
+      </label>
+      <button class="linkbtn" id="bBack">← Zurück</button>
+    </div>
+  </div>
+  <p class="keys">Tastatur: <b>1</b> zustimmen · <b>2</b> neutral · <b>3</b> ablehnen · <b>←</b> zurück</p>
+</section>
+
+<section id="result" hidden aria-label="Ergebnis">
+  <h2>Ihre Übereinstimmung</h2>
+  <div class="scope" role="group" aria-label="Auswertungsumfang">
+    <button id="scAll" aria-pressed="true">Alle 14 Thesen</button>
+    <button id="scKarte" aria-pressed="false">Nur die 10 Kartenthesen</button>
+  </div>
+  <div class="res" id="res"></div>
+  <div class="readout" id="readout"></div>
+
+  <h2 id="hDiff">Das gab den Ausschlag</h2>
+  <div class="cmp" id="diffList"></div>
+
+  <h2>Hier waren sich alle drei einig</h2>
+  <p class="hint" style="margin-top:-6px">Bei diesen Thesen hilft Ihnen die Wahl nicht weiter –
+  die drei Bewerber liegen gleich.</p>
+  <div class="cmp" id="sameList"></div>
+
+  <button class="restart" id="bRestart">Von vorn beginnen</button>
+</section>
+
+<details id="posDetails">
+  <summary>Alle 14 Thesen und die Positionen der drei Bewerber ansehen</summary>
+  <div class="tablewrap">
+    <table>
+      <thead><tr>
+        <th>These</th><th class="hb">Bade</th><th class="hg">Groote</th><th class="hv">Völker</th><th>Beleg</th>
+      </tr></thead>
+      <tbody id="posBody"></tbody>
+    </table>
+  </div>
+</details>
+</main>
+
+<footer>
+  <p><b>Datengrundlage.</b> Videoaufzeichnung „Diskussion zur Landratswahl in Leer – Kandidaten
+  stellen sich vor“, aufgenommen am 20.&nbsp;August 2026 im Sparkassenforum in Leer, veröffentlicht
+  von ostfriesen.tv. Moderation: Lars Reckermann und Karin Lüppen (Ostfriesen-Zeitung /
+  General-Anzeiger). Die Zeitangabe hinter jeder These verweist auf die Stelle in der Aufzeichnung.</p>
+  <p><b>Thesen 1–10</b> stammen aus der Kartenrunde: Alle drei mussten dieselbe Frage beantworten,
+  alle drei haben geantwortet. <b>Thesen 11–14</b> sind aus den Wortbeiträgen abgeleitet. Dieser Block
+  ist unsymmetrisch – nicht jeder hat sich zu jedem Punkt geäußert, und der Herausforderer Bade hat
+  an diesem Abend die meisten konkreten Forderungen gestellt. Wo jemand keine klare Aussage gemacht
+  hat, zählt die These für ihn nicht mit. Über den Schalter oben lässt sich das Ergebnis auf die
+  symmetrischen zehn Kartenthesen beschränken.</p>
+  <p><b>Wertung.</b> Wie beim Wahl-O-Mat: gleiche Haltung 2 Punkte, eine Seite neutral 1 Punkt,
+  gegenteilige Haltung 0 Punkte; als wichtig markierte Thesen zählen doppelt. Der Prozentwert ist
+  der Anteil der erreichten an den erreichbaren Punkten – je Bewerber nur über die Thesen, zu denen
+  er eine dokumentierte Position hat.</p>
+  <p>Eine Karte ist kein Programm: Es gab an diesem Abend weder Begründungen noch Nachfragen zu den
+  zehn Kartenfragen. Diese Seite ersetzt keinen Blick in die Wahlprogramme.</p>
+</footer>
+
+</div>
+
+<script>
+const T = [
+ {n:1, b:'karte', src:'Karte · 45:48',
+  t:'Für einen ausgeglichenen Kreishaushalt würde ich auch unpopuläre Kürzungen durchsetzen.',
+  p:{bade:1, groote:1, voelker:-1}},
+ {n:2, b:'karte', src:'Karte · 46:17',
+  t:'Für ein Infrastrukturprojekt, das ich für richtig halte, würde ich mich auch mit einer Bürgerinitiative anlegen.',
+  p:{bade:1, groote:1, voelker:1}},
+ {n:3, b:'karte', src:'Karte · 46:40',
+  t:'Der Landkreis soll beim Klimaschutz verbindliche Ziele beschließen, auch wenn das Wirtschaft und Kommunen mehr kostet.',
+  p:{bade:1, groote:1, voelker:1}},
+ {n:4, b:'karte', src:'Karte · 46:58',
+  t:'Der Ausbau der Windkraft soll aktiv vorangetrieben werden, selbst wenn es vor Ort massiven Widerstand gibt.',
+  p:{bade:1, groote:1, voelker:1}},
+ {n:5, b:'karte', src:'Karte · 47:14',
+  t:'Beim Thema Migration soll klar mehr Integration eingefordert werden, notfalls auch mit strengeren Vorgaben.',
+  p:{bade:1, groote:1, voelker:1}},
+ {n:6, b:'karte', src:'Karte · 47:31',
+  t:'Der Landkreis soll mehr Geld in Bus und Bahn stecken, auch wenn dafür an Straßenprojekten gespart werden muss.',
+  p:{bade:-1, groote:1, voelker:-1},
+  note:'Kurz zuvor hatten alle drei im Gespräch den Straßenausbau als Priorität genannt – auch Matthias Groote, der hier die grüne Karte zeigte.'},
+ {n:7, b:'karte', src:'Karte · 47:45',
+  t:'Krankenhäuser, Gesundheitsversorgung und Rettungsdienst sollen im Zweifel höher gewichtet werden als andere freiwillige Leistungen des Landkreises.',
+  p:{bade:1, groote:1, voelker:1}},
+ {n:8, b:'karte', src:'Karte · 48:03',
+  t:'Der Landkreis soll sämtliche Neben- und Lobbytätigkeiten des Landrats öffentlich machen.',
+  p:{bade:1, groote:1, voelker:1}},
+ {n:9, b:'karte', src:'Karte · 48:17',
+  t:'Bei besonders umstrittenen Projekten soll es mehr direkte Bürgerbeteiligung geben, auch wenn das Entscheidungen verzögert.',
+  p:{bade:1, groote:1, voelker:-1}},
+ {n:10, b:'karte', src:'Karte · 48:37',
+  t:'Der Landkreis Leer braucht eher einen Verwalter als einen politischen Antreiber.',
+  p:{bade:-1, groote:-1, voelker:-1}},
+ {n:11, b:'wort', src:'Wortbeitrag · 19:39–21:34',
+  t:'Wenn das Geld nicht für alles reicht, hat die Notfall- und Rettungsversorgung Vorrang vor Pflege und Krankenhaus.',
+  p:{bade:1, groote:-1, voelker:null},
+  note:'Bade nannte die Notfallmedizin, Groote die Pflege. Völker lehnte es ab, überhaupt zu priorisieren.'},
+ {n:12, b:'wort', src:'Wortbeitrag · 11:54 / 15:01',
+  t:'Der Landkreis soll bei der Gewinnung von Ärzten offensiv in den Wettbewerb mit anderen Landkreisen gehen.',
+  p:{bade:1, groote:-1, voelker:null},
+  note:'Groote warnte ausdrücklich vor einem „ruinösen Überbietungswettbewerb“, Bade forderte, sich dem Wettbewerb zu stellen. Völker äußerte sich dazu nicht eindeutig.'},
+ {n:13, b:'wort', src:'Wortbeitrag · 26:12–28:33',
+  t:'Der Landkreis soll leerstehende Wohnungen aktiv angehen – mit einem Leerstandsregister und dem Grundsatz „Eigentum verpflichtet“.',
+  p:{bade:1, groote:null, voelker:-1},
+  note:'Völker hielt dagegen, außerhalb kreiseigener Gebäude sei das nur ein Appell. Groote lenkte auf die energetische Sanierung und äußerte sich zum Leerstand nicht.'},
+ {n:14, b:'wort', src:'Wortbeitrag · 30:07 / 33:41',
+  t:'Beim Wohnen und Bauen soll der Landkreis über die Zuständigkeit der Gemeinden hinaus eine aktiv steuernde Rolle übernehmen.',
+  p:{bade:1, groote:-1, voelker:null},
+  note:'Groote: „Das gibt der Landkreis nicht vor“ – die Bürgermeister würden Puls kriegen. Bade warb für einen gemeinsamen Masterplan mit den zwölf Kommunen.'}
+];
+
+const C = [
+ {k:'bade',    name:'Olaf Bade',      party:'parteilos, von der CDU nominiert', cls:'c-bade'},
+ {k:'groote',  name:'Matthias Groote',party:'SPD, amtierender Landrat',         cls:'c-groote'},
+ {k:'voelker', name:'Jens Völker',    party:'FDP',                              cls:'c-voelker'}
+];
+
+const KEY = 'kartencheck-leer-v1';
+let idx = 0, ans = {}, wgt = {}, scope = 'all';
+
+try{
+  const s = JSON.parse(localStorage.getItem(KEY) || 'null');
+  if(s && s.ans){ ans = s.ans; wgt = s.wgt || {}; idx = Math.min(s.idx || 0, T.length - 1); }
+}catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify({ans, wgt, idx})); }catch(e){} }
+
+const $ = id => document.getElementById(id);
+const rail = $('rail');
+T.forEach(() => { const d = document.createElement('div'); d.className = 'tick'; rail.appendChild(d); });
+
+function labelFor(v){
+  if(v === 1) return 'Stimme zu';
+  if(v === -1) return 'Stimme nicht zu';
+  if(v === 0) return 'Neutral';
+  return 'Übersprungen';
+}
+function posLabel(v){
+  if(v === 1) return 'Ja';
+  if(v === -1) return 'Nein';
+  return 'keine klare Aussage';
+}
+
+function renderQuiz(){
+  const t = T[idx];
+  $('these').textContent = t.t;
+  $('srctext').textContent = t.src;
+  $('src').className = 'src' + (t.b === 'wort' ? ' word' : '');
+  $('hint').textContent = t.note || '';
+  $('hint').style.display = t.note ? '' : 'none';
+  $('cnt').textContent = 'These ' + (idx + 1) + ' von ' + T.length;
+  $('blocklabel').textContent = t.b === 'karte' ? 'Kartenrunde' : 'Wortbeiträge';
+  const a = ans[t.n];
+  $('bJa').setAttribute('aria-pressed', a === 1);
+  $('bNein').setAttribute('aria-pressed', a === -1);
+  $('bNeutral').setAttribute('aria-pressed', a === 0);
+  $('bSkip').setAttribute('aria-pressed', a === 'skip');
+  $('wBox').checked = !!wgt[t.n];
+  $('wLabel').className = 'weight' + (wgt[t.n] ? ' on' : '');
+  $('bBack').disabled = idx === 0;
+  [...rail.children].forEach((el, i) => {
+    const v = ans[T[i].n];
+    el.className = 'tick' + (i === idx ? ' now' : (v === 'skip' ? ' skip' : (v !== undefined ? ' done' : '')));
+  });
+}
+
+function answer(v){
+  ans[T[idx].n] = v;
+  save();
+  if(idx < T.length - 1){ idx++; renderQuiz(); save(); }
+  else { showResult(); }
+}
+$('bJa').onclick = () => answer(1);
+$('bNein').onclick = () => answer(-1);
+$('bNeutral').onclick = () => answer(0);
+$('bSkip').onclick = () => answer('skip');
+$('bBack').onclick = () => { if(idx > 0){ idx--; renderQuiz(); save(); } };
+$('wBox').onchange = e => { wgt[T[idx].n] = e.target.checked; $('wLabel').className = 'weight' + (e.target.checked ? ' on' : ''); save(); };
+
+document.addEventListener('keydown', e => {
+  if($('quiz').hidden) return;
+  if(e.target.tagName === 'INPUT') return;
+  if(e.key === '1') answer(1);
+  else if(e.key === '2') answer(0);
+  else if(e.key === '3') answer(-1);
+  else if(e.key === 'ArrowLeft' && idx > 0){ idx--; renderQuiz(); save(); }
+});
+
+function score(ck){
+  let got = 0, max = 0, counted = 0;
+  T.forEach(t => {
+    if(scope === 'karte' && t.b !== 'karte') return;
+    const a = ans[t.n], p = t.p[ck];
+    if(a === undefined || a === 'skip' || p === null) return;
+    const w = wgt[t.n] ? 2 : 1;
+    max += 2 * w; counted++;
+    if(a === 0 || p === 0) got += 1 * w;
+    else if(a === p) got += 2 * w;
+  });
+  return {pct: max ? Math.round(got / max * 100) : null, counted};
+}
+
+function chip(cls, who, val){
+  return '<span class="chip ' + cls + '"><b>' + who + '</b> ' + val + '</span>';
+}
+
+function showResult(){
+  $('quiz').hidden = true;
+  $('result').hidden = false;
+  renderResult();
+  $('result').scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+function renderResult(){
+  const rows = C.map(c => Object.assign({}, c, score(c.k)));
+  const ranked = [...rows].sort((a, b) => (b.pct === null ? -1 : b.pct) - (a.pct === null ? -1 : a.pct));
+  $('res').innerHTML = ranked.map(r => `
+    <div class="cand ${r.cls}">
+      <div><span class="nm">${r.name}</span> <span class="pty">${r.party}</span></div>
+      <div class="pct">${r.pct === null ? '–' : r.pct + '%'}</div>
+      <div class="bar"><i style="width:${r.pct === null ? 0 : r.pct}%"></i></div>
+      <div class="meta">${r.counted} ${r.counted === 1 ? 'These' : 'Thesen'} gewertet</div>
+    </div>`).join('');
+
+  const answered = T.filter(t => scope === 'all' || t.b === 'karte')
+                    .filter(t => ans[t.n] !== undefined && ans[t.n] !== 'skip').length;
+  const top = ranked[0], second = ranked[1];
+  let txt = '';
+  if(answered === 0){
+    txt = 'Sie haben keine These beantwortet – es gibt nichts zu vergleichen.';
+  } else if(top.pct !== null && second.pct !== null && top.pct - second.pct <= 5){
+    txt = `<b>Kein klarer Treffer.</b> ${top.name} und ${second.name} liegen nur ${top.pct - second.pct} Prozentpunkte auseinander. Das passt zum Abend: Bei sieben der vierzehn Thesen haben alle drei gleich geantwortet. Die eigentliche Entscheidung fällt in der Liste darunter.`;
+  } else {
+    txt = `<b>${top.name}</b> liegt bei Ihnen vorn. Verlassen Sie sich nicht allein auf die Prozentzahl: Bei sieben der vierzehn Thesen waren sich alle drei einig, sodass sich die Werte ohnehin annähern. Entscheidend ist die Liste darunter.`;
+  }
+  $('readout').innerHTML = txt;
+
+  const inScope = t => scope === 'all' || t.b === 'karte';
+  const vals = t => C.map(c => t.p[c.k]);
+  const isSame = t => { const v = vals(t); return v.every(x => x !== null && x === v[0]); };
+
+  const diff = T.filter(t => inScope(t) && !isSame(t));
+  const same = T.filter(t => inScope(t) && isSame(t));
+
+  $('diffList').innerHTML = diff.map(t => {
+    const a = ans[t.n];
+    const you = (a === undefined) ? '<span class="chip">nicht beantwortet</span>'
+              : (a === 'skip') ? '<span class="chip">übersprungen</span>'
+              : chip('you', 'Sie', labelFor(a));
+    const cs = C.map(c => {
+      const p = t.p[c.k];
+      let cls = '';
+      if(p !== null && a !== undefined && a !== 'skip' && a !== 0) cls = (a === p) ? 'match' : 'miss';
+      return chip(cls, c.name.split(' ')[1], posLabel(p));
+    }).join('');
+    return `<div class="cmpitem"><p class="t"><span class="no">${t.n}</span>${t.t}</p>
+            <div class="chips">${you}${cs}</div></div>`;
+  }).join('');
+  $('hDiff').textContent = 'Das gab den Ausschlag — ' + diff.length + ' von ' + (diff.length + same.length) + ' Thesen';
+
+  $('sameList').innerHTML = same.map(t => {
+    const a = ans[t.n];
+    const you = (a === undefined || a === 'skip') ? '<span class="chip">ohne Antwort</span>' : chip('you', 'Sie', labelFor(a));
+    const all = posLabel(t.p.bade);
+    let cls = '';
+    if(a !== undefined && a !== 'skip' && a !== 0) cls = (a === t.p.bade) ? 'match' : 'miss';
+    return `<div class="cmpitem"><p class="t"><span class="no">${t.n}</span>${t.t}</p>
+            <div class="chips">${you}${chip(cls, 'Alle drei', all)}</div></div>`;
+  }).join('');
+}
+
+$('scAll').onclick = () => { scope = 'all'; $('scAll').setAttribute('aria-pressed', 'true'); $('scKarte').setAttribute('aria-pressed', 'false'); renderResult(); };
+$('scKarte').onclick = () => { scope = 'karte'; $('scKarte').setAttribute('aria-pressed', 'true'); $('scAll').setAttribute('aria-pressed', 'false'); renderResult(); };
+$('bRestart').onclick = () => {
+  ans = {}; wgt = {}; idx = 0; save();
+  $('result').hidden = true; $('quiz').hidden = false;
+  renderQuiz();
+  window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
+$('posBody').innerHTML = T.map(t => {
+  const cell = v => `<td class="p ${v === 1 ? 'ja' : v === -1 ? 'nein' : 'na'}">${v === 1 ? 'Ja' : v === -1 ? 'Nein' : '–'}</td>`;
+  return `<tr><td class="tx">${t.n}. ${t.t}</td>${cell(t.p.bade)}${cell(t.p.groote)}${cell(t.p.voelker)}
+          <td style="font-family:var(--mono);font-size:11px;color:var(--muted);white-space:nowrap">${t.src.replace(' · ', '<br>')}</td></tr>`;
+}).join('');
+
+renderQuiz();
+if(Object.keys(ans).length === T.length) showResult();
+</script>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zwei Wahlabende, ausgewertet – Kommunalwahl 2026</title>
+<style>
+:root{
+  --ground:#f2f1ee;
+  --surface:#ffffff;
+  --ink:#1b1e1d;
+  --muted:#666c69;
+  --line:#dcdad4;
+  --line-strong:#b9b6ae;
+  --leer:#0b4a4e;
+  --leer-soft:#e2ecec;
+  --wol:#2c3d63;
+  --wol-soft:#e4e7ef;
+  --sans:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --ground:#121413;
+    --surface:#1a1e1d;
+    --ink:#e8ebe9;
+    --muted:#9aa29f;
+    --line:#2b302e;
+    --line-strong:#434a47;
+    --leer:#63b6ae;
+    --leer-soft:#182a2a;
+    --wol:#93a7d4;
+    --wol-soft:#1c2233;
+  }
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;background:var(--ground);color:var(--ink);
+  font-family:var(--serif);font-size:17px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:720px;margin:0 auto;padding:36px 22px 60px;}
+
+.eyebrow{
+  font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 12px;
+}
+h1{
+  font-family:var(--sans);font-weight:700;font-size:clamp(29px,6.5vw,42px);
+  line-height:1.05;letter-spacing:-.025em;margin:0 0 14px;text-wrap:balance;
+}
+.standfirst{font-size:18px;margin:0 0 22px;max-width:58ch;color:var(--ink);}
+
+.facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  border:1px solid var(--line);border-radius:2px;background:var(--surface);
+  margin:0 0 44px;
+}
+.facts div{padding:11px 13px;border-right:1px solid var(--line);}
+.facts div:last-child{border-right:none;}
+.facts .l{font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--muted);}
+.facts .v{font-family:var(--sans);font-size:14px;font-weight:600;margin-top:3px;
+  font-variant-numeric:tabular-nums;}
+
+/* Projektblock */
+.proj{margin-bottom:46px;}
+.proj .rule{height:4px;background:var(--c);border-radius:1px;margin-bottom:14px;}
+.proj h2{
+  font-family:var(--sans);font-size:21px;font-weight:700;letter-spacing:-.015em;
+  margin:0 0 4px;color:var(--c);
+}
+.proj .sub{font-family:var(--sans);font-size:13.5px;color:var(--muted);margin:0 0 4px;}
+.proj .who{font-size:15px;color:var(--ink);margin:0 0 18px;}
+.proj .who b{font-weight:600;}
+
+/* Dokumentliste */
+.docs{border-top:1px solid var(--line);}
+a.doc{
+  display:grid;grid-template-columns:78px 1fr;gap:2px 16px;align-items:start;
+  padding:15px 4px;border-bottom:1px solid var(--line);
+  text-decoration:none;color:inherit;transition:background .13s ease;
+}
+a.doc:hover{background:var(--surface);}
+.badge{
+  font-family:var(--sans);font-size:9.5px;font-weight:700;letter-spacing:.09em;
+  text-transform:uppercase;text-align:center;padding:4px 5px;border-radius:2px;
+  background:var(--soft);color:var(--c);border:1px solid var(--c);
+  grid-row:1/span 3;align-self:start;margin-top:3px;
+}
+.doc .ti{font-family:var(--sans);font-size:16px;font-weight:600;line-height:1.3;}
+.doc .de{font-size:15px;line-height:1.45;color:var(--ink);}
+.doc .me{
+  font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  font-variant-numeric:tabular-nums;margin-top:3px;
+}
+a.doc:hover .ti{text-decoration:underline;text-underline-offset:3px;}
+
+.share{
+  display:flex;flex-wrap:wrap;gap:6px 10px;align-items:baseline;
+  padding:10px 4px 0;font-family:var(--sans);font-size:12.5px;color:var(--muted);
+}
+.share a{color:var(--c);text-decoration:underline;text-underline-offset:2px;word-break:break-all;}
+
+footer{
+  margin-top:8px;padding-top:20px;border-top:2px solid var(--line-strong);
+  font-family:var(--sans);font-size:13px;line-height:1.6;color:var(--muted);
+}
+footer h3{
+  font-family:var(--sans);font-size:11px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink);margin:0 0 8px;
+}
+footer p{margin:0 0 11px;max-width:70ch;}
+footer b{color:var(--ink);font-weight:600;}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Kommunalwahl Niedersachsen · Sonntag, 13. September 2026</p>
+  <h1>Zwei Wahlabende, ausgewertet</h1>
+  <p class="standfirst">Für die Landratswahl im Landkreis Leer und die Bürgermeisterwahl in
+  Westoverledingen wurden die vollständigen Videoaufzeichnungen der beiden Wahlpodien
+  ausgewertet – zu je einer gedruckten Entscheidungshilfe und einem interaktiven Abgleich.
+  Alles auf dieser Seite beruht ausschließlich auf dem, was an diesen Abenden gesagt und
+  gezeigt wurde.</p>
+  <div class="facts">
+    <div><div class="l">Wahltag</div><div class="v">So., 13.09.2026</div></div>
+    <div><div class="l">Stichwahl</div><div class="v">So., 27.09.2026</div></div>
+    <div><div class="l">Ausgewertet</div><div class="v">2 Podien, 3:45&nbsp;h</div></div>
+    <div><div class="l">Bewerber</div><div class="v">3 + 5</div></div>
+  </div>
+</header>
+
+<main>
+
+<section class="proj" style="--c:var(--leer); --soft:var(--leer-soft)">
+  <div class="rule"></div>
+  <h2>Landratswahl Landkreis Leer</h2>
+  <p class="sub">Podium von Ostfriesen-Zeitung und General-Anzeiger, 20. August 2026,
+  Sparkassenforum Leer · rund 2 Stunden</p>
+  <p class="who"><b>Olaf Bade</b> (parteilos, von der CDU nominiert) · <b>Matthias Groote</b>
+  (SPD, amtierender Landrat) · <b>Jens Völker</b> (FDP)</p>
+
+  <div class="docs">
+    <a class="doc" href="Landratswahl-Leer/Landratswahl-Leer-2026-Entscheidungshilfe.pdf">
+      <span class="badge">PDF</span>
+      <span class="ti">Entscheidungshilfe zur Landratswahl</span>
+      <span class="de">Alle Themenblöcke des Abends nebeneinander – Gesundheit, Wohnen, Verkehr,
+      Wirtschaft, Schulen, Klima, Verwaltung. Mit der vollständig ausgewerteten Kartenrunde,
+      den Konfliktlinien und dem, was offen blieb.</span>
+      <span class="me">12 Seiten · 4.437 Wörter · 518 KB</span>
+    </a>
+
+    <a class="doc" href="Landratswahl-Leer/kartencheck.html">
+      <span class="badge">Interaktiv</span>
+      <span class="ti">Rote Karte, grüne Karte</span>
+      <span class="de">Beantworten Sie dieselben 14 Thesen wie die drei Bewerber und sehen Sie,
+      wer zu Ihnen passt. Grundlage sind die zehn Fragen, die auf dem Podium nur mit roter oder
+      grüner Karte beantwortet wurden – Bild für Bild aus dem Video ausgewertet.</span>
+      <span class="me">14 Thesen · ca. 5 Minuten</span>
+    </a>
+
+    <a class="doc" href="Landratswahl-Leer/entscheidungshilfe.html">
+      <span class="badge">HTML</span>
+      <span class="ti">Entscheidungshilfe als Webseite</span>
+      <span class="de">Dieselbe Fassung wie das PDF, als Datei zum Lesen im Browser – zugleich
+      die Druckvorlage, aus der das PDF erzeugt wurde.</span>
+      <span class="me">Druckvorlage · A4</span>
+    </a>
+  </div>
+  <p class="share">Link zum Weitergeben des interaktiven Abgleichs:
+    <a href="https://claude.ai/code/artifact/b337e9b3-07ab-47a2-90bc-59364d03d945">claude.ai/code/artifact/b337e9b3</a>
+  </p>
+</section>
+
+<section class="proj" style="--c:var(--wol); --soft:var(--wol-soft)">
+  <div class="rule"></div>
+  <h2>Bürgermeisterwahl Westoverledingen</h2>
+  <p class="sub">Podium von General-Anzeiger und Ostfriesen-Zeitung, 3. September 2026,
+  Flachsmeer · rund 105 Minuten</p>
+  <p class="who"><b>Gerwin Kuhlmann</b> (parteilos) · <b>Tammo Lenger</b> (Grüne, gemeinsam mit
+  der SPD) · <b>Janno Schmidt</b> (parteilos) · <b>Thorsten Sinning</b> (parteiunabhängig) ·
+  <b>Michael Ulrichs</b> (parteilos, ehem. CDU)</p>
+
+  <div class="docs">
+    <a class="doc" href="Buergermeisterwahl-Westoverledingen/Buergermeisterwahl-Westoverledingen-2026-Entscheidungshilfe.pdf">
+      <span class="badge">PDF</span>
+      <span class="ti">Entscheidungshilfe zur Bürgermeisterwahl</span>
+      <span class="de">Der Streit um die Reithalle Ihrhove, Bauflächen, die Straßenausbaubeiträge
+      als klarste Trennlinie des Abends, Schulwegsicherheit, Wirtschaft sowie Parteibindung und
+      Umgang mit der AfD – jeweils alle fünf Bewerber nebeneinander.</span>
+      <span class="me">12 Seiten · 4.338 Wörter · 489 KB</span>
+    </a>
+
+    <a class="doc" href="Buergermeisterwahl-Westoverledingen/festlegungscheck.html">
+      <span class="badge">Interaktiv</span>
+      <span class="ti">Wer legt sich fest</span>
+      <span class="de">Elf Thesen aus dem Abend – mit einer zweiten Auswertung daneben: wie oft
+      sich jeder der fünf klar positioniert hat und wie oft er offenließ, wohin er will.</span>
+      <span class="me">11 Thesen · ca. 4 Minuten</span>
+    </a>
+
+    <a class="doc" href="Buergermeisterwahl-Westoverledingen/entscheidungshilfe.html">
+      <span class="badge">HTML</span>
+      <span class="ti">Entscheidungshilfe als Webseite</span>
+      <span class="de">Dieselbe Fassung wie das PDF, als Datei zum Lesen im Browser – zugleich
+      die Druckvorlage, aus der das PDF erzeugt wurde.</span>
+      <span class="me">Druckvorlage · A4</span>
+    </a>
+  </div>
+  <p class="share">Link zum Weitergeben des interaktiven Abgleichs:
+    <a href="https://claude.ai/code/artifact/b12b0436-79aa-41dc-9cd3-b515a4a0813a">claude.ai/code/artifact/b12b0436</a>
+  </p>
+</section>
+
+</main>
+
+<footer>
+  <h3>Wie diese Unterlagen entstanden sind</h3>
+  <p>Grundlage ist jeweils allein die öffentliche Videoaufzeichnung des Podiums, veröffentlicht
+  von ostfriesen.tv. Ausgewertet wurde ein automatisch erzeugtes Transkript; alle Aussagen sind
+  deshalb <b>sinngemäß zusammengefasst, nicht wörtlich zitiert</b>. Namen, Lebensläufe und
+  Wahltermine wurden gegen öffentliche Quellen geprüft. Wo etwas unklar blieb, ist das in den
+  Dokumenten gekennzeichnet statt geglättet.</p>
+  <p>Für die Landratswahl in Leer ließ sich die Ja-/Nein-Kartenrunde vollständig aus dem
+  Videobild rekonstruieren – dort steht hinter jeder These eine Zeitmarke. In Westoverledingen
+  gab es keine solche Runde; die Positionen sind dort aus den Wortbeiträgen abgeleitet und
+  damit Auslegung. Dieser Unterschied ist auf den jeweiligen Seiten offengelegt.</p>
+  <p><b>Diese Unterlagen stammen nicht</b> von der Ostfriesen-Zeitung, nicht vom
+  General-Anzeiger, nicht von ostfriesen.tv und nicht von den Kandidaten. Sie enthalten
+  <b>keine Wahlempfehlung</b>. Ein Podiumsabend zeigt Schwerpunkte und Reaktionsvermögen,
+  nicht das vollständige Programm eines Bewerbers.</p>
+  <p style="color:var(--muted);font-size:12px;margin-top:18px">Zusammengestellt am 5. September 2026.
+  Die beiden interaktiven Seiten liegen auch als Datei neben den PDFs; die Links zum Weitergeben
+  führen auf die veröffentlichte Fassung.</p>
+</footer>
+
+</div>
+</body>
+</html>
