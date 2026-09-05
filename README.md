@@ -78,6 +78,12 @@ urheberrechtlich geschützt; in Westoverledingen ließen sie sich technisch ohne
 gewinnen, weil dort durchgehend eine weite Totale gefilmt wurde. Das Monogramm zeigt die
 Initialen in der Farbe, mit der der Bewerber in allen Tabellen des Dokuments markiert ist.
 
+## Datenschutz
+
+Die Seite setzt keine Cookies, misst keine Reichweite und bindet keine fremden Server ein –
+Schriften liegen selbst gehostet unter `assets/fonts/`. Einzelheiten in
+[`datenschutz.html`](datenschutz.html).
+
 ## Stand
 
 Zusammengestellt am 5. September 2026, acht Tage vor der Wahl.
