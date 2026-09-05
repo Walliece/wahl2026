@@ -119,6 +119,11 @@ footer{margin-top:20px; padding-top:9px; border-top:1px solid var(--line);}
   body{max-width:820px; margin:0 auto; padding:24px 18px 60px;}
 }
 @media screen and (max-width:700px){
+  body{hyphens:auto; -webkit-hyphens:auto; overflow-wrap:break-word;}
+  table{display:block; overflow-x:auto; -webkit-overflow-scrolling:touch;}
+  .metabar{display:block;}
+  .metabar div{border-right:none; border-bottom:1px solid var(--line); padding:7px 9px;}
+  .metabar div:last-child{border-bottom:none;}
   .metabar{flex-wrap:wrap;}
   .metabar div{flex:1 1 46%; border-right:none; border-bottom:1px solid var(--line);}
   .metabar div:nth-last-child(-n+1){border-bottom:none;}
